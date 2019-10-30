@@ -1,0 +1,98 @@
+<div class="sidebar_contents">
+  <p>検索とか</p>
+  <p>都道府県 プルダウンで検索</p>
+</div>
+<div class="main_contents">
+  <!-- <p>家の詳細</p> -->
+  <div class="show_mypost_house">
+    <p class="show_house_name"><a href="/houses/<%=@house.id%>"><%= @house.name %></a></p>
+    <!-- <p>円</p> -->
+    <div class="imagelist_box"><!-- 家の写真 -->
+      <% @house.images.each do |image| %>
+
+        <div class="show_house_image_list">
+          <!-- <a href="/houses/<%=@house.id%>"> -->
+            <% if image.image1.present? %>
+               <img src="<%=image.image1.url %>" width="50px" height="50px" class="show_house_image">
+            <% end %>
+            <% if image.image2.present? %>
+               <img src="<%=image.image2.url %>" width="50" height="50" class="show_house_image">
+            <% end %>
+            <% if image.image3.present? %>
+               <img src="<%=image.image3.url %>" width="50" height="50" class="show_house_image">
+            <% end %>
+            <% if image.image4.present? %>
+               <img src="<%=image.image4.url %>" width="50" height="50" class="show_house_image">
+            <% end %>
+            <% if image.image5.present? %>
+               <img src="<%=image.image5.url %>" width="50" height="50" class="show_house_image">
+          <% end %>
+        </div>
+      </div>
+      <div class="map_box">
+        この辺に地図入れたい
+      </div>
+      <table class=show_house_houselist>
+        <tr>
+          <th>価格</th> <th>間取り</th> <th>所在地</th>
+        </tr>
+          <td><%= @house.price %>円</td><td><%=@house.madori%></td><td>test県test市test群...</td>
+        <tr>
+        </tr>
+      </table>
+      <% if current_user.id  == @house.user_id %>
+        <p><%= link_to '投稿を削除', "/houses/#{@house.id}", method: :delete ,class:'show_delete'%></p>
+        <p><%= link_to '投稿を編集',"/houses/#{@house.id}/edit", class:'show_post_house' %></p>
+      <% end %>
+      <% if !Favorite.exists?(user_id:current_user.id,house_id:@house.id)%>
+        <%= link_to "お気に入りに追加","/houses/#{@house.id}/add",method: :post ,class:"show_favorite_btn"%>
+      <% else %>
+        <%= link_to "お気に入り解除","/houses/#{@house.id}/add",method: :delete ,class:"show_favorite_btn" %>
+      <% end %>
+
+    <div class="qabox">
+      <p>Q&Aコーナーです</p>
+          <% @qatexts.each do |text| %>
+            <% if text.user_id == @house.user_id %>
+              <div class="qa_name">
+                <p><%="オーナー"%></p>
+              </div>
+              <div class="baloon_left">
+                <p><%= text.text %></p>
+              </div>
+            <% else %>
+              <div class="qa_name_right">
+                <p><%=text.user.name%></p>
+              </div>
+              <div class="baloon_right">
+                <p><%= text.text %></p>
+              </div>
+            <% end %>
+          <% end %>
+    </div>
+      <% if current_user %>
+        <%= form_tag("/houses/#{@house.id}/qaforms", method: :post,id:"new_comment") do %>
+          <textarea cols="30" name="text" placeholder="コメントする" rows="2" class="qa_textbox"></textarea>
+          <input type="submit" value="SENT" class="qa_submit">
+        <% end %>
+      <% end %>
+  <% end %>
+  </div>
+
+  <h5>   →この空き家の所有者に問い合わせする</h5>
+  <p class="back_houses"><a href="/houses"> 一覧に戻る</a></p>
+
+</div>
+<div class="adv_contents">
+  <div class="inaka_photo">
+    <img src="https://spi-ra.jp/wp-content/uploads/2019/06/38477617_m-1080x380.jpg" class="photo_image">
+  </div>
+
+  <div class="inaka_photo2">
+    <img src="https://spi-ra.jp/wp-content/uploads/2019/06/38477617_m-1080x380.jpg" class="photo_image">
+  </div>
+
+  <div class="index_box">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQChRe6l5ne8y8iGvnMfRVeqZ4wM_k-149EyCyrZloJErOnKjuI&s" class="photo_image">
+  </div>
+</div>

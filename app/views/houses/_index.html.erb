@@ -1,0 +1,29 @@
+<% houses.each do |house| %>
+<div class="mypost_house">
+  <!-- 家の名前 -->
+     <p><%= house.name %></p>
+  <!-- 家の価格 -->
+     <p><%= house.price %>円</p>
+  <!-- <p>家の写真</p> -->
+    <% house.images.each do |image| %>
+      <% if image.image1.present? %>
+         <img src="<%=image.image1.url %>" width="50" height="50" class="house_image">
+      <% else %>
+      <%= "画像はありません" %>
+      <% end %>
+      <% if image.image2.present? %>
+         <img src="<%=image.image2.url %>" width="50" height="50" class="house_image">
+      <% end %>
+      <% if image.image3.present? %>
+         <img src="<%=image.image3.url %>" width="50" height="50" class="house_image">
+      <% end %>
+      <% if image.image4.present? %>
+         <img src="<%=image.image4.url %>" width="50" height="50" class="house_image">
+      <% end %>
+      <% if image.image5.present? %>
+         <img src="<%=image.image5.url %>" width="50" height="50" class="house_image">
+      <% end %>
+    <% end %>
+</div>
+<% end %>
+<%= paginate @houses %>

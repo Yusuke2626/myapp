@@ -1,0 +1,236 @@
+// Place all the styles related to the prefectures controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.japan_map{
+  width:89%;
+  height:calc(100vh - 180px);
+  margin:  10px auto;
+  // background: lightgray;
+  position: relative;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding-left: 70px;
+}
+.map_back{
+  width:80%;
+  height:80%;
+  // background-color: #EEEEEE;
+  margin-top: 25px;
+  margin-left: -10px;
+  border-radius: 20px;
+  border: 30px solid #EEEEEE;
+}
+.japan_map h5{
+  font-size: 20px;
+  margin:0;
+  // padding-top: 80px;
+  // padding-left: 30px;
+  border:solid 2px gray;
+  border-radius: 20px;
+  padding:5px;
+  display:inline-block;
+  position: absolute;
+  top:100px;
+  left:170px;
+
+}
+.hokkaido p{
+  position:absolute;
+  top:90px;
+  right:185px;
+  display:inline-block;
+  // font-weight: bold;
+  font-size: 20px;
+}
+.hokkaido img{
+  width:70px;
+  height:70px;
+  position:absolute;
+  top:120px;
+  right:185px;
+}
+.hokkaido :hover{
+  border:solid 2px gray;
+  border-radius: 5px;
+  color:white;
+  background-color: lightgray;
+  z-index: 999;
+  padding: 5px;
+
+}
+.touhoku p{
+  position:absolute;
+  top:180px;
+  right:265px;
+  display:inline-block;
+  // font-weight: bold;
+  font-size: 20px;
+}
+.touhoku img{
+  width:72px;
+  height:100px;
+  position:absolute;
+  top:210px;
+  right:203px;
+}
+.touhoku :hover{
+  border:solid 2px gray;
+  border-radius: 5px;
+  color:white;
+  background-color: lightgray;
+  z-index: 999;
+  padding: 5px;
+}
+.tyubu p{
+  position:absolute;
+  top:230px;
+  right:320px;
+  display:inline-block;
+  // font-weight: bold;
+  font-size: 20px;
+}
+.tyubu :hover{
+ border:solid 2px gray;
+ border-radius: 5px;
+ color:white;
+ background-color: lightgray;
+ z-index: 999;
+ padding: 5px;
+}
+.tyubu img{
+  width:120px;
+  height:120px;
+  position:absolute;
+  top:270px;
+  right:260px;
+}
+.kantou p{
+  position:absolute;
+  top:400px;
+  right:200px;
+  display:inline-block;
+  // font-weight: bold;
+  font-size: 20px;
+}
+.kantou :hover{
+  border:solid 2px gray;
+  border-radius: 5px;
+  color:white;
+  background-color: lightgray;
+  z-index: 999;
+  padding: 5px;
+}
+.kantou img{
+  width:90px;
+  height:70px;
+  position:absolute;
+  top:310px;
+  right:205px;
+}
+.kansai p{
+  position:absolute;
+  top:290px;
+  right:365px;
+  display:inline-block;
+  // font-weight: bold;
+  font-size: 20px;
+}
+.kansai :hover{
+  border:solid 2px gray;
+  border-radius: 5px;
+  color:white;
+  background-color: lightgray;
+  z-index: 999;
+  padding: 5px;
+}
+.kansai img{
+  width:70px;
+  height:70px;
+  position:absolute;
+  top:320px;
+  right:345px;
+}
+.tyugoku p{
+  position:absolute;
+  top:290px;
+  right:445px;
+  display:inline-block;
+  // font-weight: bold;
+  font-size: 20px;
+}
+.tyugoku :hover{
+ border:solid 2px gray;
+ border-radius: 5px;
+ color:white;
+ background-color: lightgray;
+ z-index: 999;
+ padding: 5px;
+}
+.tyugoku img{
+  width:80px;
+  height:40px;
+  position:absolute;
+  top:320px;
+  right:415px;
+}
+.shikoku p{
+  position:absolute;
+  top:400px;
+  right:415px;
+  display:inline-block;
+  // font-weight: bold;
+  font-size: 20px;
+}
+.shikoku :hover{
+ border:solid 2px gray;
+ border-radius: 5px;
+ color:white;
+ background-color: lightgray;
+ z-index: 999;
+ padding: 5px;
+}
+.shikoku img{
+  width:60px;
+  height:32px;
+  position:absolute;
+  top:362px;
+  right:410px;
+}
+.kyusyu_text{
+  position:absolute;
+  top:320px;
+  right:535px;
+  display:inline-block;
+  // font-weight: bold;
+  font-size: 20px;
+}
+.okinawa_text{
+  position:absolute;
+  top:420px;
+  right:565px;
+  display:inline-block;
+  // font-weight: bold;
+  font-size: 20px;
+}
+.kyusyu_okinawa :hover{
+ border:solid 2px gray;
+ border-radius: 5px;
+ color:white;
+ background-color: lightgray;
+ z-index: 999;
+ padding: 5px;
+}
+.kyusyu_okinawa .kyusyu{
+  width:60px;
+  height:70px;
+  position:absolute;
+  top:350px;
+  right:490px;
+}
+.kyusyu_okinawa .okinawa{
+  width:15px;
+  height:15px;
+  position:absolute;
+  top:410px;
+  right:545px;
+}

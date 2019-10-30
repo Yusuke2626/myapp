@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>空き家.com</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= favicon_link_tag('favicon.ico') %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="back_contents">
+      <a href="houses"><h3>空き家.com</h3></a>
+      <h2>田舎暮らし始めよう</h2>
+      <h2>空き家.comとは？</h2>
+      <a href="houses"><h2>空き家の一覧を見る</h2></a>
+      <ul class="top_ul">
+        <% if user_signed_in? %>
+          <li></li>
+        <% else %>
+          <li class="top_li"><%=link_to '新規登録',new_user_registration_path,class:'post' %></li>
+          <li class="top_li"><%=link_to 'ログイン',new_user_session_path,class:'post' %></li>
+      </ul>
+      <%end%>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<div class="sidebar_contents">
+<p>heloo my page</p>
+  <div class="user_info">
+    <p> ユーザー情報  </p>
+    <p>名前:<%=current_user.name%></p>
+    <!-- <p>年齢:<%=current_user.age%></p> -->
+    <p>投稿した空き家の数:<%=current_user.houses.length%></p>
+    <p>お気に入りの空き家の数:<%=current_user.favorites.length%></p>
+    <p>ユーザー情報の変更</p>
+  </div>
+</div>
+<div class="main_contents">
+  <% if current_user.houses.present? %>
+  <p class="my_post_title">投稿した空き家</p>
+    <% @houses.each do |house| %>
+    <div class="mypost_house">
+      <p><a href="/houses/<%=house.id%>"><%= house.name %></a></p>
+
+         <!-- <p>家の写真</p> -->
+        <div class="house_image_box">
+          <% house.images.each do |image| %>
+          <div class="house_image_list">
+            <a href="/houses/<%=house.id%>">
+            <% if image.image1.present? %>
+              <img src="<%=image.image1.url %>" width="50" height="50" class="house_image">
+            <% end %>
+            <% if image.image2.present? %>
+              <img src="<%=image.image2.url %>" width="50" height="50" class="house_image">
+            <% end %>
+            <% if image.image3.present? %>
+              <img src="<%=image.image1.url %>" width="50" height="50" class="house_image">
+            <% end %>
+            </a>
+          <% end %>
+        </div>
+        </div>
+        <table class=show_house_list>
+          <tr>
+            <th>価格</th><th>間取り</th><th>所在地</th>
+          </tr>
+          <td><%= house.price %>円</td><td>test</td><td>test県test市test群...</td>
+            <tr></tr>
+        </table>
+        <p><%= link_to '投稿を削除', "/houses/#{house.id}", method: :delete ,class:'show_delete'%></p>
+        <p><%= link_to '投稿を編集',"/houses/#{house.id}/edit", class:'show_post_house' %></p>
+        <p class="show_detail"><a href="/houses/<%=house.id%>">詳細</a></p>
+    </div>
+    <% end %>
+    <%= paginate @houses %>
+    <% end %>
+
+  <p><%= link_to 'お気に入りの空き家をみる',"/users/#{current_user.id}/favorites", class:'get' %></p>
+
+  <p><%= link_to '@空き家を投稿する',new_house_path, class:'get' %> </p>
+</div>
+<div class="adv_contents">
+  <div class="inaka_photo">
+    <img src="https://spi-ra.jp/wp-content/uploads/2019/06/38477617_m-1080x380.jpg" class="photo_image">
+  </div>
+
+  <div class="inaka_photo2">
+    <img src="https://spi-ra.jp/wp-content/uploads/2019/06/38477617_m-1080x380.jpg" class="photo_image">
+  </div>
+
+  <div class="index_box">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQChRe6l5ne8y8iGvnMfRVeqZ4wM_k-149EyCyrZloJErOnKjuI&s" class="photo_image">
+  </div>
+</div>

@@ -1,0 +1,73 @@
+// Place all the styles related to the tops controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.back_contents{
+  height: calc(100vh);
+  background-image:url('11.jpg');
+  background-size: cover;
+  z-index: 1;
+  text-decoration: none;
+}
+
+// body{
+//   color:white;
+// }
+// h1{
+//   margin-top: 0;
+//   font-family:sans-serif;
+//   // font-weight:bolder;
+//   font-size: 10px;
+// }
+
+h2{
+  font-size: 35px;
+  display:inline-block;
+  margin:0;
+  padding-right:30px;
+  padding-top: 10px;
+  padding-left: 50px;
+  padding-bottom: 10px;
+  text-shadow:1px 2px 0 black, -0px -1px 0 black;
+  color:white;
+
+   // border: 2px solid black;
+}
+h2:hover{
+  // color:black;
+  cursor: pointer;
+  transform: scale(1.05, 1.05);
+}
+h3{
+  margin:0px;
+  font-size: 300px;
+  margin-left: 30px;
+  position:relative;
+  color:white;
+}
+h3:hover {
+  cursor: pointer;
+  transform: scale(1.02, 1.01);
+
+}
+.top_ul{
+  position:absolute;
+  top:10px;
+  right:20px;
+  list-style: none;
+  font-size: 20px;
+  font-family: sans-serif;
+  text-decoration: none;
+}
+.top_li{
+  display:inline-block;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 20px;
+  background:#C2EEFF;
+  text-decoration: none;
+  color:white;
+}
+a{
+  text-decoration: none;
+  color:white;
+}

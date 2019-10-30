@@ -1,0 +1,33 @@
+// Place all the styles related to the favorites controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.fav_post_delete{
+  position: absolute;
+  top:50px;
+  right:60px;
+  font-size: 5px;
+  border: solid 1px gray;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+
+.fav_post_edit{
+  position: absolute;
+  top:70px;
+  right:60px;
+  font-size: 5px;
+  border: solid 1px gray;
+  border-radius: 5px;
+  padding: 2px;
+
+}
+.fav_detail_btn{
+  position: absolute;
+  top:92px;
+  right:70px;
+  font-size: 15px;
+  border: solid 1px gray;
+  border-radius: 5px;
+  padding:2px;
+}

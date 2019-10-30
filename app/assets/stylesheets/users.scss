@@ -1,0 +1,101 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.log_in_form{
+  border:solid 2px lightgray;
+  border-radius: 20px;
+  width:40%;
+  margin:15px auto;
+}
+.log_in_form h2{
+  display: inline-block;
+  margin: 10px  120px 20px 170px;
+  color:lightgray;
+  border:none;
+}
+
+
+
+
+
+
+
+
+.my_post_title{
+
+}
+.adv_contents{
+  height: 600px;
+  width: 240px;
+  border-radius: 10px;
+  border:solid 2px lightgray;
+  box-shadow:0px 2px 2px 2px lightgray;
+  // position:absolute;
+  // top:110px;
+  // right: 105px;
+  padding:8px;
+  float: right;
+  margin:30px 90px 0 10px;
+}
+
+.post_house{
+  border: solid 1px gray;
+  margin:3px;
+}
+.delete{
+  border: solid 1px gray;
+  margin:3px;
+}
+.show_delete{
+  position: absolute;
+  top:50px;
+  right:60px;
+  font-size: 5px;
+  border: solid 1px gray;
+  border-radius: 5px;
+  padding: 2px;
+}
+.show_post_house{
+  position: absolute;
+  top:72px;
+  right:60px;
+  font-size: 5px;
+  border: solid 1px gray;
+  border-radius: 5px;
+  padding: 2px;
+}
+.show_detail{
+  position: absolute;
+  top:95px;
+  right:67px;
+  font-size: 15px;
+  border: solid 1px gray;
+  border-radius: 5px;
+  padding: 2px;
+}
+.show_house_list{
+  border:solid 1px lightgray;
+  border-radius: 5px;
+  display:inline-block;
+  position: absolute;
+  top:50px;
+  left:190px;
+  margin:10px 0 0 10px;
+  border-collapse: collapse;
+}
+.show_house_list th {
+  border:solid 1px lightgray;
+  padding:3px 50px;
+  font-weight: normal;
+  font-size: 10px;
+  background-color: #F0FFFF;
+  height:10px;
+  writing-mode: horizontal-tb;
+}
+.show_house_list td{
+  border:solid 1px lightgray;
+  font-size: 10px;
+  height: 30px;
+  text-align: center;
+}

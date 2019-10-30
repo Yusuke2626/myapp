@@ -1,0 +1,58 @@
+<div class="sidebar_contents">
+  <p>検索とか</p>
+  <!-- <p>都道府県 プルダウンで検索</p> -->
+</div>
+<div class="main_contents">
+<p>投稿を編集</p>
+<%= form_for(@house,url:{controller:'houses',action:'update'}) do |f| %>
+  <div class="field">
+    <%= f.label :address, "都道府県" %><br>
+    <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択して下さい' %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name ,:placeholder => "名前"%>
+  </div>
+  <div class="field">
+     <%= f.label :price %><br>
+     <%= f.number_field :price ,:placeholder => "価格"  %>万円
+  </div>
+  <%= f.fields_for :images do |i| %>
+    <div class="field">
+      <%= i.label :image1 %>
+      <%= i.file_field :image1 %>
+    </div>
+    <div class="field">
+      <%= i.label :image2 %>
+      <%= i.file_field :image2 %>
+    </div>
+    <div class="field">
+      <%= i.label :image3 %>
+      <%= i.file_field :image3 %>
+    </div>
+    <div class="field">
+      <%= i.label :image4 %>
+      <%= i.file_field :image4 %>
+    </div>
+    <div class="field">
+      <%= i.label :image5 %>
+      <%= i.file_field :image5 %>
+    </div>
+    <% end %>
+  <div class="actions">
+    <%= f.submit "登録する" %>
+  </div>
+<% end %>
+
+</div>
+<div class="inaka_photo">
+  <img src="https://spi-ra.jp/wp-content/uploads/2019/06/38477617_m-1080x380.jpg" class="photo_image">
+</div>
+
+<div class="inaka_photo2">
+  <img src="https://spi-ra.jp/wp-content/uploads/2019/06/38477617_m-1080x380.jpg" class="photo_image">
+</div>
+
+<div class="index_box">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQChRe6l5ne8y8iGvnMfRVeqZ4wM_k-149EyCyrZloJErOnKjuI&s" class="photo_image">
+</div>

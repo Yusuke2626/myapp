@@ -1,0 +1,78 @@
+<div class="sidebar_contents">
+  <p>検索フォーム</p>
+  <p>都道府県 プルダウンで検索できるようにしたい</p>
+
+</div>
+<div class="main_contents">
+  <div class="japan_map">
+    <div class="map_back">
+      <h5>エリアから探す</h5>
+
+      <div class="hokkaido">
+        <%= link_to   controller: "houses", action: "search", prefecture_id:0 do%>
+          <%= image_tag 'hokkaido.png' %>
+          <p>北海道</p>
+        <% end %>
+      </div>
+      <div class="touhoku">
+        <%= link_to   controller: "houses", action: "search", prefecture_id:1 do%>
+
+          <%= image_tag 'touhoku.png' %>
+          <p>東北</p>
+        <% end %>
+      </div>
+      <div class="kantou">
+        <%= link_to   controller: "houses", action: "search", prefecture_id:7 do%>
+          <%= image_tag 'kantou.png' %>
+          <p>関東</p>
+        <% end %>
+      </div>
+      <div class="tyubu">
+        <%= link_to   controller: "houses", action: "search", prefecture_id:14 do%>
+          <%= image_tag 'chubu.png' %>
+          <p>中部</p>
+        <% end %>
+      </div>
+      <div class="kansai">
+        <%= link_to   controller: "houses", action: "search", prefecture_id:23 do%>
+          <%= image_tag 'kansai.png' %>
+          <p>関西</p>
+      <% end %>
+      </div>
+      <div class="tyugoku">
+        <%= link_to   controller: "houses", action: "search", prefecture_id:30 do%>
+          <%= image_tag 'tyugoku' %>
+          <p>中国</p>
+        <% end %>
+      </div>
+      <div class="shikoku">
+        <%= link_to   controller: "houses", action: "search", prefecture_id:35 do%>
+          <%= image_tag 'shikoku' %>
+          <p>四国</p>
+        <% end %>
+      </div>
+      <div class="kyusyu_okinawa">
+        <%= link_to   controller: "houses", action: "search", prefecture_id:39 do%>
+          <p class="kyusyu_text">九州</p>
+          <p class="okinawa_text">沖縄</p>
+          <%= image_tag 'kyusyu.png' ,class:'kyusyu'%>
+          <%= image_tag 'okinawa.png' ,class:'okinawa'%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="adv_contents">
+    <div class="inaka_photo">
+      <img src="https://spi-ra.jp/wp-content/uploads/2019/06/38477617_m-1080x380.jpg" class="photo_image">
+    </div>
+    <div class="inaka_photo2">
+      <img src="https://spi-ra.jp/wp-content/uploads/2019/06/38477617_m-1080x380.jpg" class="photo_image">
+    </div>
+    <div class="index_box">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQChRe6l5ne8y8iGvnMfRVeqZ4wM_k-149EyCyrZloJErOnKjuI&s" class="photo_image">
+    </div>
+    <div class="inaka_photo3">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRDn22k1gnZEv-PqacNgWQriSz5cvzHrAJ_arWH0zzBCRIBY4X9" class="photo_image">
+    </div>
+  </div>

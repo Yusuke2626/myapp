@@ -1,0 +1,73 @@
+<div class="sidebar_contents">
+  <p>検索フォーム</p>
+  <p>都道府県 プルダウンで検索できるようにしたい</p>
+
+</div>
+<div class="main_contents">
+
+  <h5 class="text">全ての空き家一覧</h5>
+  <% @houses.each do |house| %>
+  <div class="mypost_house">
+    <p class="house_name"><a href="/houses/<%=house.id%>"><%= house.name %></a></p>
+    <div class="house_image_box">
+      <div class="house_image_list">
+        <% if house.images.present? %>
+        <% else %>
+          <p class="not_image"><%= "画像はありません" %></p>
+        <% end %>
+        <% house.images.each do |image| %>
+            <a href="/houses/<%=house.id%>">
+              <% if image.image1.present? %>
+                <img src="<%=image.image1.url %>" width="50" height="50" class="house_image">
+              <% else %>
+                <p class="not_image"><%= "画像はありません" %></p>
+              <% end %>
+              <% if image.image2.present? %>
+                 <img src="<%=image.image2.url %>" width="50" height="50" class="house_image">
+              <% end %>
+              <% if image.image3.present? %>
+                 <img src="<%=image.image3.url %>" width="50" height="50" class="house_image">
+              <% end %>
+            </a>
+        <% end %>
+      </div>
+    </div>
+      <%if user_signed_in? %>
+        <% if !Favorite.exists?(user_id:current_user.id,house_id:house.id)%>
+          <%= link_to "お気に入りに追加","/houses/#{house.id}/add",method: :post ,class:"favorite_btn"%>
+        <% else %>
+          <%= link_to "お気に入り解除","/houses/#{house.id}/add",method: :delete ,class:"favorite_btn" %>
+        <% end %>
+      <% end %>
+    <div class="detail_btn">
+      <a href="/houses/<%=house.id%>">詳細</a>
+    </div>
+
+    <table class=house_list>
+      <tr>
+        <th>価格</th><th>間取り</th><th>所在地</th>
+      </tr>
+        <td><%= house.price %>円</td><td><%= house.madori %></td><td><%=house.prefecture.name %></td>
+      <tr>
+      </tr>
+    </table>
+  </div>
+
+  <% end %>
+  <%= paginate @houses %>
+  </div>
+  <div class="adv_contents">
+    <div class="inaka_photo">
+      <img src="https://spi-ra.jp/wp-content/uploads/2019/06/38477617_m-1080x380.jpg" class="photo_image">
+    </div>
+    <div class="inaka_photo2">
+      <img src="https://spi-ra.jp/wp-content/uploads/2019/06/38477617_m-1080x380.jpg" class="photo_image">
+    </div>
+    <div class="index_box">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQChRe6l5ne8y8iGvnMfRVeqZ4wM_k-149EyCyrZloJErOnKjuI&s" class="photo_image">
+    </div>
+
+    <div class="inaka_photo3">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRDn22k1gnZEv-PqacNgWQriSz5cvzHrAJ_arWH0zzBCRIBY4X9" class="photo_image">
+    </div>
+  </div>
