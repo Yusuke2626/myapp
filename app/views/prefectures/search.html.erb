@@ -1,6 +1,8 @@
 <div class="sidebar_contents">
-
-   <div class="sidebar_form">
+  <div class="sidebar_form">
+  <br>
+    <!-- <h5>全国から探す</h5>
+    <a href="/houses">全ての空き家</a> -->
     <%= form_for(@house,url:search_searches_path, method:'get') do |f| %>
       <%= f.label :エリアから選ぶ, class:"form_text" %>
       <%= f.select :prefecture_id, [["北海道",0],["東北エリア",1],["関東エリア",7],["中部エリア",14],["関西エリア",25],["中国エリア",32],["四国エリア",35],["九州、沖縄エリア",46]],prompt: '選択して下さい' %>
@@ -8,15 +10,14 @@
     <% end %>
     <p></p><br><br>
     <%= form_for(@house,url:search_prefectures_path, method:'get') do |f| %>
-      <%= f.label :都道府県から選ぶ,class:"form_text" %>
+      <%= f.label :都道府県から選ぶ, class:"form_text" %>
       <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択して下さい' %>
       <%= f.submit "検索" %>
     <% end %>
   </div>
-
   <% if user_signed_in? %>
   <div class="user_info">
-    <p> ユーザー情報  </p>
+    <p> ユーザー情報 </p>
     <p>名前:<%=current_user.name%></p>
     <!-- <p>年齢:<%=current_user.age%></p> -->
     <p>投稿した空き家の数:<%=current_user.houses.length%></p>
@@ -27,25 +28,26 @@
 
 </div>
 <div class="main_contents">
+
   <div class = "search_text">
 
     <% if @house.prefecture_id == 0 %>
-      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=0"> 北海道エリア ></a></h5>
-    <% elsif @house.prefecture_id == 1 %>
-      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=1"> 東北エリア ></a></h5>
+      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=0">北海道エリア ></a></h5>
+    <% elsif @house.prefecture_id == 1 ||@house.prefecture_id == 2||@house.prefecture_id == 3||@house.prefecture_id == 4||@house.prefecture_id == 5||@house.prefecture_id == 6 %>
+      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=1">東北エリア ></a></h5>
     <% elsif @house.prefecture_id == 7 %>
-      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=1"> 関東エリア ></a></h5>
+      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=1">関東エリア ></a></h5>
     <% elsif @house.prefecture_id == 14 %>
-      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=1"> 中部エリア ></a></h5>
+      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=1">中部エリア ></a></h5>
     <% elsif @house.prefecture_id == 23 %>
-      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=1"> 関西エリア ></a></h5>
+      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=1">関西エリア ></a></h5>
     <% end %>
 
   </div>
-  <!-- <div class ="search_text_plus">
-    <h5 class="text"><a href="/houses/search?prefecture_id=<%=@house.prefecture_id%>"><%=@house.prefecture.name%> ></a></h5>
-  </div> -->
 
+  <div class ="search_text_plus">
+    <h5 class="text"><a href="/houses/search?prefecture_id=<%=@house.prefecture_id%>"><%=@house.prefecture.name%> ></a></h5>
+  </div>
 
   <% if @houses.present? %>
   <% @houses.each do |house| %>

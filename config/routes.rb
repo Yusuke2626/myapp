@@ -15,6 +15,7 @@ end
     resources :prefectures,only:[:index,:show] do
       collection do
         get 'search'
+
       end
     end
     # get '/prefectures' => 'prefectures#index'
@@ -44,6 +45,12 @@ end
     # get 'users/:id'=>'users#show'
     resources :users ,only:[:show] do
       resources :favorites, only:[:index]
+    end
+
+    resources :searches ,only:[:index]do
+      collection do
+        get 'search'
+      end
     end
 
 end

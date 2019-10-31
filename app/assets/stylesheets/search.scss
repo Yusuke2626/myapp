@@ -1,8 +1,40 @@
+.search_text{
+  display:inline-block;
+}
 .search_text p{
   display: inline-block;
-
 }
-
 .search_text h5{
   display:inline-block;
+  margin:10px 0px 10px 15px;
+}
+.search_text_plus{
+  display:inline-block;
+}
+.form_text{
+  font-size: 13px;
+  margin:10px;
+  font-weight: bold;
+  color:gray;
+}
+.sidebar_contents .edit_house{
+  margin-top: 15px;
+  // height:px;
+}
+.sidebar_contents select{
+  margin-top: 15px;
+  height:20px;
+  font-size: 12px;
+}
+.sidebar_contents input{
+  height:20px;
+  font-size: 12px;
+  margin:10px;
+}
+
+.sidebar_form{
+  padding: 30px 30px 80px 30px  ;
+  margin:35px 10px 0px 10px;
+  background-color: #eeeeee;
+  border-radius: 5px;
 }

@@ -1,6 +1,5 @@
 <div class="sidebar_contents">
-<p>heloo my page</p>
-  <div class="user_info">
+  <div class="user_show_info">
     <p> ユーザー情報  </p>
     <p>名前:<%=current_user.name%></p>
     <!-- <p>年齢:<%=current_user.age%></p> -->
@@ -8,7 +7,10 @@
     <p>お気に入りの空き家の数:<%=current_user.favorites.length%></p>
     <p>ユーザー情報の変更</p>
   </div>
+  <h5><%= link_to 'お気に入りの空き家をみる',"/users/#{current_user.id}/favorites", class:'get' %></h5>
+  <h5><%= link_to '空き家を投稿する',new_house_path, class:'get' %> </h5>
 </div>
+
 <div class="main_contents">
   <% if current_user.houses.present? %>
   <p class="my_post_title">投稿した空き家</p>
@@ -49,11 +51,12 @@
     <%= paginate @houses %>
     <% end %>
 
-  <p><%= link_to 'お気に入りの空き家をみる',"/users/#{current_user.id}/favorites", class:'get' %></p>
+  <!-- <p><%= link_to 'お気に入りの空き家をみる',"/users/#{current_user.id}/favorites", class:'get' %></p> -->
 
-  <p><%= link_to '@空き家を投稿する',new_house_path, class:'get' %> </p>
+  <!-- <p><%= link_to '@空き家を投稿する',new_house_path, class:'get' %> </p> -->
 </div>
 <div class="adv_contents">
+  <h5>広告入れたい</h5>
   <div class="inaka_photo">
     <img src="https://spi-ra.jp/wp-content/uploads/2019/06/38477617_m-1080x380.jpg" class="photo_image">
   </div>

@@ -1,4 +1,4 @@
-class FavoritesController < ApplicationController
+class FavoritesController < HousesController
 
   def create
     house = House.find(params[:house_id])
@@ -16,5 +16,6 @@ class FavoritesController < ApplicationController
 
   def index
     @favorites = current_user.favorites.all.page(params[:page]).per(3).order('created_at DESC')
+    @house = House.new
   end
 end
