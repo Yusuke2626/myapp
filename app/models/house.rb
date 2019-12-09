@@ -10,7 +10,7 @@ class House < ApplicationRecord
   has_many:images, :dependent => :destroy
   has_many:qaforms
 
-  has_many:mails
+  has_many:messages
 
   has_many:addresses, :dependent => :destroy
   accepts_nested_attributes_for :addresses

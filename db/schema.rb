@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2019_11_05_095057) do
+ActiveRecord::Schema.define(version: 2019_12_09_150836) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "postcode"
@@ -79,7 +78,7 @@ ActiveRecord::Schema.define(version: 2019_11_05_095057) do
     t.index ["house_id"], name: "index_images_on_house_id"
   end
 
-  create_table "mails", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "tittle"
     t.text "text"
     t.integer "to_user_id"
@@ -88,7 +87,7 @@ ActiveRecord::Schema.define(version: 2019_11_05_095057) do
     t.datetime "updated_at", null: false
     t.integer "open_num"
     t.integer "house_id"
-    t.index ["user_id"], name: "index_mails_on_user_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "prefecture_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -142,7 +141,7 @@ ActiveRecord::Schema.define(version: 2019_11_05_095057) do
   add_foreign_key "houses", "prefectures"
   add_foreign_key "houses", "users"
   add_foreign_key "images", "houses"
-  add_foreign_key "mails", "users"
+  add_foreign_key "messages", "users"
   add_foreign_key "prefecture_users", "prefectures"
   add_foreign_key "prefecture_users", "users"
 end
