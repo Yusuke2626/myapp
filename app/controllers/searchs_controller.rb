@@ -41,6 +41,7 @@
 #           elsif input == 39 || input == 40 || input == 41 || input  == 42 || input == 43 || input == 44 || input  == 45 || input  == 46
 #             @houses = House.where(prefecture_id:[39,40,41,42,43,44,45,46]).page(params[:page]).per(5).order('created_at DESC')
 #
+
 #             @house = House.find_by(prefecture_id:39)
 #
 #           end
