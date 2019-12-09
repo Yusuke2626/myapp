@@ -35,16 +35,24 @@ end
       post 'add' => 'favorites#create'
       delete '/add' =>'favorites#destroy'
       resources :qaforms,only:[:create]
+      resources :mails,only:[:create,:new,:show]
       collection do
         get 'search'
       end
+      namespace :api, format: 'json' do
+        resources :houses, only:[:index,:show]
 
+      end
+      resources :charges
     end
+
+
     # ,only:[:index,:create,:new,:edit,:update,:destroy]
 
     # get 'users/:id'=>'users#show'
     resources :users ,only:[:show] do
       resources :favorites, only:[:index]
+      resources :mails ,only:[:index,:search]
     end
 
     resources :searches ,only:[:index]do
@@ -52,5 +60,10 @@ end
         get 'search'
       end
     end
+
+    resources :addresses ,only:[:index]
+    resources :mails ,only:[:search]
+
+
 
 end

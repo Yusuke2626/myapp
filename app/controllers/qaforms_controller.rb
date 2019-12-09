@@ -1,13 +1,20 @@
 class QaformsController < ApplicationController
 
   def create
-    Qaform.create(text:qa_params[:text], user_id:current_user.id, house_id:qa_params[:house_id])
-    redirect_back(fallback_location:house_qaforms_path)
+    @qatext = Qaform.new(text:qa_params[:text],user_id:current_user.id, house_id:params[:house_id])
+   # binding.pry
+    @qatext.save!
+      respond_to do |format|
+        format.html {redirect_to house_path(params[:house_id])}
+        format.json
+    end
+
   end
 
-  private
+   private
   def qa_params
-    params.permit(:house_id,:text)
+    params.require(:qaform).permit(:text)
+
   end
 
 end

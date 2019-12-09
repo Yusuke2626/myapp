@@ -26,11 +26,11 @@
 <% end %>
 </div>
 <div class="main_contents">
-  <p class="my_post_title">お気に入りの空き家</p>
+  <h5 class="my_post_title_fav">お気に入り 一覧</h5>
   <% @favorites.each do |favorite| %>
   <div class="mypost_house">
     <a href="/houses/<%=favorite.house.id%>">
-    <p class="house_name">家の名前 <%= favorite.house.name %></p>
+    <p class="house_name"> <%= favorite.house.name %></p>
        <!-- <p>家の価格 <%= favorite.house.price %>円</p> -->
     <div class="house_image_box">
       <div class="house_image_list">
@@ -56,13 +56,24 @@
     <div class="fav_detail_btn">
       <a href="/houses/<%=favorite.house_id%>">詳細</a>
     </div>
+    <table class=house_list>
+      <tr>
+        <th>価格</th><th>間取り</th><th>所在地</th>
+      </tr>
+        <td><%= favorite.house.price %>円</td><td><%= favorite.house.madori %></td><td><%=favorite.house.prefecture.name %></td>
+      <tr>
+      </tr>
+    </table>
   </div>
   <% end %>
-  <p><a href="/users/<%=current_user.id %>">投稿した空き家</a></p>
-  <p><%= link_to '空き家を投稿する',new_house_path, class:'get' %> </p>
+  <p><a href="/houses">    → back</a></p>
+  <!-- <p><a href="/users/<%=current_user.id %>">投稿した空き家</a></p>
+  <!-- <p><a href="/users/<%=current_user.id %>">投稿した空き家</a></p>
+  <p><%= link_to '空き家を投稿する',new_house_path, class:'get' %> </p> -->
   <%= paginate @favorites %>
-</div>
 
+</div>
+<!--
 <div class="adv_contents">
   <div class="inaka_photo">
   <img src="https://spi-ra.jp/wp-content/uploads/2019/06/38477617_m-1080x380.jpg" class="photo_image">
@@ -75,4 +86,4 @@
   <div class="index_box">
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQChRe6l5ne8y8iGvnMfRVeqZ4wM_k-149EyCyrZloJErOnKjuI&s" class="photo_image">
   </div>
-</div>
+</div> -->

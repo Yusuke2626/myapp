@@ -1,0 +1,39 @@
+<div class="sidebar_contents">
+  <div class="mail_box">
+    <h5><%=link_to'メールボックス',"/users/#{current_user.id}/mails"%></h5>
+    <div class="receive_box">
+      <p><a href="/">受信箱</a></p>
+      <% if @receive_mails %>
+
+      <h5></h5>
+        <%@receive_mails.each do |m|%>
+          <% if  m.open_num == 0 %>
+            <h5>新着:<%= m.tittle%></h5>
+          <%end%>
+        <%end%>
+      <% end %>
+    </div>
+    <div class="sending_box">
+      <p><a hre="/">送信箱</a></p>
+    </div>
+  </div>
+  <div class="user_show_info">
+    <p> ユーザー情報  </p>
+    <p>名前:<%=current_user.name%></p>
+    <!-- <p>年齢:<%=current_user.age%></p> -->
+    <p>投稿した空き家の数:<%=current_user.houses.length%></p>
+    <p>お気に入りの空き家の数:<%=current_user.favorites.length%></p>
+    <p>ユーザー情報の変更</p>
+  </div>
+  <h5><%= link_to '→ お気に入りの空き家をみる',"/users/#{current_user.id}/favorites", class:'get' %></h5>
+  <h5><%= link_to '→ 空き家を投稿する',new_house_path, class:'get' %> </h5>
+</div>
+<div class="my_mail_box">
+    <div class="my_receiving_box">
+      <h5>送信完了しました。</h5>
+      <h5><%=link_to 'メールボックスに戻る' ,"/users/#{current_user.id}/mails" %></h5>
+    </div>
+    <div id ="flash">
+      <%= flash[:notice]%>
+    </div>
+</div>

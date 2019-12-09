@@ -1,11 +1,21 @@
 
 <div class="sidebar_contents">
+  <!-- <p>検索</p> -->
+  <!-- <div class= total_house_count>
+    <p>投稿された空き家の数</p>
+    <h5><%= @all_houses.length %>件</h5>
+    <
+
+  </div> -->
   <div class="sidebar_form">
-  <br>
+
+    <!-- <br> -->
+    <%= link_to "全てから選ぶ","/houses",method: :get ,class:"all_search"%>
+    <!-- <p class="input">検索</p> -->
     <%= form_for(@house,url:search_searches_path, method:'get') do |f| %>
       <%= f.label :エリアから選ぶ, class:"form_text" %>
       <%= f.select :prefecture_id, [["北海道",0],["東北エリア",1],["関東エリア",7],["中部エリア",14],["関西エリア",25],["中国エリア",32],["四国エリア",35],["九州、沖縄エリア",46]],prompt: '選択して下さい' %>
-      <%= f.submit "検索" %>
+      <%= f.submit "検索" ,class:'side_submit'%>
     <% end %>
     <p></p><br><br>
     <%= form_for(@house,url:search_prefectures_path, method:'get') do |f| %>
@@ -19,9 +29,9 @@
     <p> ユーザー情報  </p>
     <p>名前:<%=current_user.name%></p>
     <!-- <p>年齢:<%=current_user.age%></p> -->
-    <p>投稿した空き家の数:<%=current_user.houses.length%></p>
+    <!-- <p>投稿した空き家の数:<%=current_user.houses.length%></p> -->
     <p>お気に入りの空き家の数:<%=current_user.favorites.length%></p>
-    <p>ユーザー情報の変更</p>
+    <p><a href="/users/edit">ユーザー情報の変更</a></p>
   </div>
   <% end %>
 </div>
@@ -61,15 +71,19 @@
           <%= link_to "お気に入り解除","/houses/#{house.id}/add",method: :delete ,class:"favorite_btn" %>
         <% end %>
       <% end %>
+
     <div class="detail_btn">
       <a href="/houses/<%=house.id%>">詳細</a>
     </div>
 
     <table class=house_list>
+      <%if house.addresses.find_by(house_id:house.id).present?%>
+        <%@address = house.addresses.find_by(house_id:house.id)%>
+      <%end%>
       <tr>
         <th>価格</th><th>間取り</th><th>所在地</th>
       </tr>
-        <td><%= house.price %>円</td><td><%= house.madori %></td><td><%=house.prefecture.name %></td>
+        <td><%= house.price %>円</td><td><%= house.madori %></td><td><%=house.prefecture.name %><%if @address%><%=@address.address_city%><%end%></td>
       <tr>
       </tr>
     </table>
@@ -78,8 +92,8 @@
   <% end %>
   <%= paginate @houses %>
   </div>
-  <div class="adv_contents">
-    <span>広告</span>
+  <!-- <div class="adv_contents">
+    <span>広告いれたい</span>
     <div class="inaka_photo">
       <img src="https://spi-ra.jp/wp-content/uploads/2019/06/38477617_m-1080x380.jpg" class="photo_image">
     </div>
@@ -93,4 +107,4 @@
     <div class="inaka_photo3">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRDn22k1gnZEv-PqacNgWQriSz5cvzHrAJ_arWH0zzBCRIBY4X9" class="photo_image">
     </div>
-  </div>
+  </div> -->

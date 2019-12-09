@@ -1,0 +1,240 @@
+// Place all the styles related to the mails controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.my_receiving_box img{
+  width:18px;
+  height:13px;
+}
+.link a{
+  color:black;
+}
+.my_mail_box nav{
+
+  margin:35px 10px 5px 20px;
+}
+.mail_part{
+  border:solid 1px gray;
+}
+.mail_box_tittle{
+  border: none;
+  font-size: 13px;
+  color:gray;
+  margin:10px 5px;
+  padding-bottom: 10px;
+  font-weight: bold;
+  // border-bottom: 1px solid lightgray;
+}
+.mail_box img{
+  width:15px;
+  height:10px;
+  margin-left: 20px;
+}
+.mail_box p{
+
+}
+.mail_new_tittle{
+  width:50%;
+}
+.mail_part a:hover{
+  color:lightgray;
+}
+.my_mail_box{
+  width:50%;
+  // height:80vh;
+  // border:solid 1px gray;
+  border-radius: 5px;
+  margin:50px 200px 0 50px;
+  background-color: #eeeeee;
+  float:left;
+  display:inline-block;
+}
+.my_receiving_box{
+  border:solid 1px gray;
+  border-radius: 5px;
+  height:300px;
+  width:70%;
+  color:gray;
+  margin:20px auto;
+  background: white;
+  display: none;
+
+}
+.my_receiving_box h5{
+  border-bottom: solid 1px lightgray;
+  margin: 20px 20px;
+}
+// .mail_text_box{
+//   width:400px;
+//   height: 30px;
+//   border:1px solid gray;
+//
+// }
+// .mail_text_box_text{
+//   border-bottom: solid 1px lightgray;
+//   margin:15px 10px;
+//   display:inline-block;
+//   float:left;
+// }
+// .mail_text_box_user{
+//   border-bottom: solid 1px lightgray;
+//   margin:15px 10px;
+//   display:inline-block;
+//   float:left;
+// }
+.my_sending_box{
+  border:solid 1px gray;
+  border-radius: 5px;
+  // height:400px;
+  width:400px;
+  color:gray;
+  margin:20px auto;
+  background: white;
+  display: none;
+}
+.my_new_mail{
+  border:solid 1px gray;
+  border-radius: 5px;
+  // height:400px;
+  width:400px;
+  color:gray;
+  margin:20px auto;
+  background: white;
+  display: none;
+}
+.my_new_mail h5{
+  border-bottom: solid 1px lightgray;
+  // margin-left: 20px;
+}
+.reply_btn{
+  border:solid 1px gray;
+  border-radius: 10px;
+  display:inline-block;
+  padding:0 5px;
+  margin-left: 160px;
+  background: white;
+  height:40px;
+  padding-bottom: 5px;
+  padding-top: -5px;
+}
+.reply_btn h5{
+  line-height: 0px;
+}
+.back_btn{
+  border:solid 1px gray;
+  border-radius: 10px;
+  display:inline-block;
+  padding:0 5px;
+  margin-left: 30px;
+  background: white;
+  width:45px;
+  height:40px;
+  padding-bottom: 5px;
+  padding-top: -5px;
+}
+.back_btn h5{
+  line-height: 0px;
+  text-align: center;
+}
+
+.mail_new_box{
+  background-color: #EEEEEE;
+  height:calc(100vh - 150px);
+  margin: 10px auto;
+  width:45%;
+  padding-top: 30px;
+  z-index: 1;
+  border-radius: 10px;
+
+
+}
+.mail_box_1{
+  background-color: white;
+  height:calc(100vh - 200px);
+  margin: 0px auto;
+  width:80%;
+  padding-top: 20px;
+  z-index: 1;
+  border-radius: 10px;
+
+}
+.mail_box_1 h5{
+  margin:10px;
+  text-align: center;
+}
+
+.mail_title{
+  text-align: center;
+  // margin-right: 100px;
+
+
+}
+.mail_text{
+  width:60%;
+  height:200px;
+  border-radius: 5px;
+  border: solid 1px lightgray;
+}
+.mail_form{
+    border-radius: 5px;
+}
+.mail_form_title{
+  width:50%;
+  height:30px;
+
+}
+
+.tab-label {
+    color: White;
+    background: LightGray;
+    padding: 3px 12px;
+    cursor: pointer;
+    display: inline-block;
+}
+.tab-content {
+    display: none;
+    border-top: 3px solid DeepSkyBlue;
+    padding: 10px;
+    box-shadow: 0 0 3px rgba(0,0,0,.2);
+}
+.tab-switch:checked+.tab-label {
+    background: DeepSkyBlue;
+}
+#TAB-01:checked ~ #TAB-01-content,
+#TAB-02:checked ~ #TAB-02-content,
+#TAB-03:checked ~ #TAB-03-content {
+    display: block;
+}
+.tab-switch {
+    display: none;
+}
+.tab_label {
+    color: White;
+    background: LightGray;
+    padding: 3px 12px;
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 5px;
+}
+.tab_content {
+    display: none;
+    border-top: 3px solid DeepSkyBlue;
+    padding: 10px;
+    box-shadow: 0 0 3px rgba(0,0,0,.2);
+}
+.tab_switch:checked+.tab_label {
+    background: #87CEEB;
+    border-radius: 5px;
+}
+#TAB-01:checked ~ #TAB-01-content,
+#TAB-02:checked ~ #TAB-02-content,
+#TAB-03:checked ~ #TAB-03-content {
+    display: block;
+}
+.tab_switch {
+    display: none;
+}
+#tab_01:checked ~ #tab_01_content,
+#tab_02:checked ~ #tab_02_content,
+#tab_03:checked ~ #tab_03_content {
+    display: block;
+}
