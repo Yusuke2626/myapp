@@ -16,19 +16,22 @@ form{
   margin:0 auto;
 }
 .form_shape{
-  display:inline-block;
+  // display:inline-block;
   text-align: center;
-  position: absolute;
-  left:450px;
-  top:30px;
+  // position: absolute;
+  // left:450px;
+  // top:30px;
   border: solid 2px lightgray;
   border-radius: 20px;
   box-shadow:0px 2px 2px 2px gray;
   width:400px;
   height:500px;
+  margin:30px auto;
+  background-color: #ffffff;
 }
 .form_parent{
-  position: relative;
+  // position: relative;
+  margin:30px auto;
 }
 .field{
   padding-top: 5px;

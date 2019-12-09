@@ -1,22 +1,26 @@
 class HousesController < ApplicationController
 
   def index
+    @all_houses = House.all
     @houses = House.all.page(params[:page]).per(5).order('created_at DESC')
     @house = House.new
+
   end
 
   def new
     @house = House.new
     @house.images.build
+    @house.addresses.build
     # @prefcture = Prefecture.find(params[:prefecture_id])
   end
 
   def create
-    current_user.houses.create(house_params)
-    # house_params[:image].each do |i|
-    #   house = current_user.house.new(house_params.clone.merge({image:i}))
-    #   house.create
-    # end
+    @house = current_user.houses.new(house_params)
+    @house.save
+    # house.pref_change
+    # binding.pry
+    # @house.create
+    # current_user.houses(house_params)
   end
 
   def destroy
@@ -26,6 +30,7 @@ class HousesController < ApplicationController
 
   def edit
     @house = current_user.houses.find(params[:id])
+    @images = @house.images
     # @house.images.build
   end
 
@@ -38,22 +43,29 @@ class HousesController < ApplicationController
     else
       redirect_to root_path
     end
+
   end
 
   def show
     @house = House.find(params[:id])
+
+    @user = @house.user
+
     @qatexts = @house.qaforms
+    @address = @house.addresses.find_by(house_id:@house.id)
+    @qaform = Qaform.new
+
+    end
   end
 
 
 
-      #
-
 
 
   def search
+     binding.pry
 
-    input = params[:prefecture_id].to_i
+    input = params[:id]
 
     if input == 0
       @houses = House.where(prefecture_id:0).page(params[:page]).per(5).order('created_at DESC')
@@ -103,15 +115,13 @@ class HousesController < ApplicationController
 
   private
   def house_params
-    params.require(:house).permit(:name,:price,:madori,:prefecture_id, images_attributes: [:image1,:image2,:image3,:image4,:image5])
+    params.require(:house).permit(:name,:price,:madori,:prefecture_id, images_attributes:[:image1,:image2,:image3,:image4,:image5], addresses_attributes:[:postcode,:prefecture_code,:address_city,:address_street,:address_building,:address,:latitude,:longitude])
   end
 
   def update_house_params
-    params.require(:house).permit(:name,:price,:madori,:prefecture_id, images_attributes: [:image1,:image2,:image3,:image4,:image5,:destroy,:id])
+    params.require(:house).permit(:name,:price,:madori,:prefecture_id, images_attributes: [:image1,:image2,:image3,:image4,:image5,:destroy,:id], addresses_attributes:[:postcode,:prefecture_code,:address_city,:address_street,:address_building,:address,:latitude,:longitude,:destroy,:id])
   end
 
   # def house_params
   #   params.require(:house).permit(:name,:price, {image:[]})
   # end
-
-end

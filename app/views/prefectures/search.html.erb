@@ -3,6 +3,8 @@
   <br>
     <!-- <h5>全国から探す</h5>
     <a href="/houses">全ての空き家</a> -->
+    <%= link_to "全てから選ぶ","/houses",method: :get ,class:"all_search"%>
+
     <%= form_for(@house,url:search_searches_path, method:'get') do |f| %>
       <%= f.label :エリアから選ぶ, class:"form_text" %>
       <%= f.select :prefecture_id, [["北海道",0],["東北エリア",1],["関東エリア",7],["中部エリア",14],["関西エリア",25],["中国エリア",32],["四国エリア",35],["九州、沖縄エリア",46]],prompt: '選択して下さい' %>
@@ -28,7 +30,6 @@
 
 </div>
 <div class="main_contents">
-
   <div class = "search_text">
 
     <% if @house.prefecture_id == 0 %>
@@ -94,10 +95,13 @@
     </div>
 
     <table class=house_list>
+      <%if house.addresses.find_by(house_id:house.id).present?%>
+        <%@address = house.addresses.find_by(house_id:house.id)%>
+      <%end%>
       <tr>
         <th>価格</th><th>間取り</th><th>所在地</th>
       </tr>
-        <td><%= house.price %>円</td><td><%= house.madori %></td><td><%=house.prefecture.name %></td>
+        <td><%= house.price %>円</td><td><%= house.madori %></td><td><%=house.prefecture.name %><%if @address %><%=@address.address_city %><% end %></td>
       <tr>
       </tr>
     </table>
@@ -107,7 +111,7 @@
   <%= paginate @houses %>
   <% end %>
   </div>
-  <div class="adv_contents">
+  <!-- <div class="adv_contents">
     <div class="inaka_photo">
       <img src="https://spi-ra.jp/wp-content/uploads/2019/06/38477617_m-1080x380.jpg" class="photo_image">
     </div>
@@ -121,4 +125,4 @@
     <div class="inaka_photo3">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRDn22k1gnZEv-PqacNgWQriSz5cvzHrAJ_arWH0zzBCRIBY4X9" class="photo_image">
     </div>
-  </div>
+  </div> -->

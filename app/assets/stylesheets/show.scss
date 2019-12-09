@@ -2,6 +2,12 @@ p{
   color:black;
   margin:3px ;
 }
+.owner_p{
+  margin:15px 40px 15px 20px;
+  color:gray;
+  display:inline-block;
+  float: right;
+}
 .qabox{
   overflow:scroll;
 }
@@ -15,7 +21,7 @@ p{
 }
 .show_mypost_house{
   // height:400px;
-  width:98%;
+  width:100%;
   border:solid 1px lightgray;
   border-radius: 5px;
   margin:12px 7px 15px 7px;
@@ -27,8 +33,9 @@ p{
   width:350px;
   height:250px;
   background-color:#EEEEEE;
-  margin:25px 30px 10px 25px;
+  margin:25px 30px 0px 25px;
   padding:2px;
+  float:left;
   // border:solid 22px lightgray;
   border-radius: 10px;
 }
@@ -76,47 +83,43 @@ p{
   height: 40px;
   text-align: center;
 }
-.show_favorite_btn{
-  position: absolute;
-  top:95px;
-  right:40px;
-  font-size: 5px;
-  border: solid 1px gray;
-  border-radius: 5px;
-  padding: 2px;
-}
+
 .qabox{
   height:160px;
   width:94%;
   border:solid 1px lightgray;
   border-radius: 5px;
-  margin:30px 7px 15px 20px;
+  margin:20px 7px 15px 20px;
   box-shadow:0px 2px 2px 2px lightgray;
 }
-#new_comment{
+#new_qaform{
   position:relative;
   margin-bottom: 10px;
 }
 .qa_textbox{
   border:solid 1px lightgray;
-  border-radius: 10px;
-  width:70%;
+  // border-radius: 5px;
+  width:65%;
+  height:25px;
   // position:absolute;
   // left:20px;
   // top:10px;
-  margin: 0px 100px 5px 10px;
+  margin: 0px 100px 5px 75px;
+  border:solid 1px lightgray;
 }
 .qa_submit{
   border:solid 1px lightgray;
-  border-radius: 10px;
-  width:10%;
-  height:35px;
-  margin-bottom: 10px;
+  border-radius: 5px;
+  width:8%;
+  height:25px;
+  // margin-bottom: px;
   position:absolute;
-  right:65px;
-  top:5px;
+  right:55px;
+  top:2px;
   font-family: sans-serif;
-  font-size: 10px;
+  font-size: 12px;
+  border:solid 1px lightgray;
+
 }
 .qabox p{
   font-size: 10px;
@@ -173,9 +176,53 @@ p{
   border: 3px solid transparent ;
   border-right: 15px solid #EEEEEE;
 }
+#map {
+  height: 210px;
+  width: 260px;
+  background-color: #eeeeee;
+  margin:15px 10px 10px 10px;
+  border-radius: 10px;
+}
 .map_box{
-  float:right;
+  float:left;
+  height:240px;
+  margin: 30px 20px;
+  border:solid 1px lightgray;
+  border-radius: 8px;
+}
+.show_delete{
   position: absolute;
-  top:70px;
-  left:400px;
+  top:332px;
+  right:60px;
+  font-size: 5px;
+  border: solid 1px gray;
+  border-radius: 5px;
+  padding: 2px;
+}
+.show_post_house{
+  position: absolute;
+  top:354px;
+  right:60px;
+  font-size: 5px;
+  border: solid 1px gray;
+  border-radius: 5px;
+  padding: 2px;
+}
+.show_favorite_btn{
+  position: absolute;
+  top:377px;
+  right:40px;
+  font-size: 5px;
+  border: solid 1px gray;
+  border-radius: 5px;
+  padding: 2px;
+}
+.show_favorite_btn2{
+  position: absolute;
+  top:395px;
+  right:20px;
+  font-size: 5px;
+  border: solid 1px gray;
+  border-radius: 5px;
+  padding: 2px;
 }

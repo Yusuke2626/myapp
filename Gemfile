@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+gem 'dotenv-rails'
+gem 'dotenv'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use mysql as the database for Active Record
@@ -47,6 +49,20 @@ gem 'byebug'
 gem 'kaminari'
 gem 'jquery-rails'
 
+gem 'jp_prefecture'
+
+gem 'gmaps4rails'
+gem 'geocoder'
+
+gem 'payjp'
+gem 'stripe'
+gem 'stripe'
+
+gem 'omniauth-stripe-connect'
+
+gem 'haml_rails'
+gem 'erb2haml'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -59,6 +75,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'pry-byebug'
 end
 
 group :test do

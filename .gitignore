@@ -25,3 +25,10 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+#apikey
+/.bash_profile
+
+/config/secrets.yml
+
+/.env

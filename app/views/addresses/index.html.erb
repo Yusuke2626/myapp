@@ -1,0 +1,17 @@
+
+
+  <%= form_for(@address) do |f| %>
+  <p>郵便番号を入力してください</p>
+  <%= f.text_field :postcode %>
+  <p>都道府県</p>
+  <%= f.text_field :prefecture_code, collection: JpPrefecture::Prefecture.all, :value_method => :name, include_blank: '都道府県' %><br>
+  <p>市区町村</p>
+  <%= f.text_field :address_city %>
+  <p>町名</p>
+  <%= f.text_field :address_street %>
+  <p>続きの住所入力してください</p>
+  <%= f.text_field :address_building %>
+
+  <div class="actions">
+    <%= f.submit %>
+  <% end %>

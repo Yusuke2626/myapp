@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many:houses , through: :favorites
   has_many:houses
 
+  has_many:mails
+
   has_many:qaforms
   # has_many:favhouses, through: :favorites, source: :house
   #
