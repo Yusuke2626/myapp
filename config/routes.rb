@@ -35,7 +35,7 @@ end
       post 'add' => 'favorites#create'
       delete '/add' =>'favorites#destroy'
       resources :qaforms,only:[:create]
-      resources :mails,only:[:create,:new,:show]
+      resources :messages,only:[:create,:new,:show]
       collection do
         get 'search'
       end
@@ -52,7 +52,7 @@ end
     # get 'users/:id'=>'users#show'
     resources :users ,only:[:show] do
       resources :favorites, only:[:index]
-      resources :mails ,only:[:index,:search]
+      resources :messages ,only:[:index,:search]
     end
 
     resources :searches ,only:[:index]do
@@ -62,7 +62,7 @@ end
     end
 
     resources :addresses ,only:[:index]
-    resources :mails ,only:[:search]
+    resources :messages ,only:[:search]
 
 
 
