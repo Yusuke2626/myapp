@@ -1,0 +1,16 @@
+
+<div class="sidebar_form">
+  <!-- <br> -->
+  <%= link_to "全てから選ぶ","/houses",method: :get ,class:"all_search"%>
+  <!-- <p class="input">検索</p> -->
+  <%= form_for(@house,url:search_searches_path, method:'get') do |f| %>
+    <%= f.label :エリアから選ぶ, class:"form_text" %>
+    <%= f.select :prefecture_id, [["北海道",0],["東北エリア",1],["関東エリア",7],["中部エリア",14],["関西エリア",25],["中国エリア",32],["四国エリア",35],["九州、沖縄エリア",46]],prompt: '選択して下さい' %>
+    <%= f.submit "検索" %>
+  <% end %>
+  <p></p><br><br>
+  <%= form_for(@house,url:search_prefectures_path, method:'get') do |f| %>
+    <%= f.label :都道府県から選ぶ, class:"form_text" %>
+    <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択して下さい' %>
+    <%= f.submit "検索" %>
+  <% end %>

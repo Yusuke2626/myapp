@@ -1,7 +1,16 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.mail_box{
+  border: solid 3px lightgray;
 
+  border-radius: 5px;
+  margin:35px 10px 0px 10px;
+  font-size: 12px;
+  padding: 0px 0px;
+  background-color: white;
+  height:30%;
+}
 .log_in_form{
   border:solid 2px lightgray;
   border-radius: 20px;
@@ -23,7 +32,7 @@
 .user_show_info{
   border: solid 3px lightgray;
   border-radius: 5px;
-  margin:40px 10px;
+  margin:0px 10px;
   font-size: 12px;
   padding: 30px 0px;
   background-color: #EEEEEE;
@@ -45,7 +54,7 @@
   // right: 105px;
   padding:8px;
   float: right;
-  margin:30px 90px 0 10px;
+  margin:50px 90px 0 10px;
 }
 
 .post_house{
@@ -56,27 +65,19 @@
   border: solid 1px gray;
   margin:3px;
 }
-.show_delete{
-  position: absolute;
-  top:50px;
-  right:60px;
-  font-size: 5px;
-  border: solid 1px gray;
-  border-radius: 5px;
-  padding: 2px;
-}
-.show_post_house{
-  position: absolute;
-  top:72px;
-  right:60px;
-  font-size: 5px;
-  border: solid 1px gray;
-  border-radius: 5px;
-  padding: 2px;
-}
-.show_detail{
+
+.user_detail{
   position: absolute;
   top:95px;
+  right:67px;
+  font-size: 15px;
+  border: solid 1px gray;
+  border-radius: 5px;
+  padding: 2px;
+}
+.show_user_detail{
+  position: absolute;
+  top:92px;
   right:67px;
   font-size: 15px;
   border: solid 1px gray;
@@ -107,4 +108,25 @@
   font-size: 10px;
   height: 30px;
   text-align: center;
+}
+.show_user_post_house{
+  position: absolute;
+  top:47px;
+  right:60px;
+  font-size: 5px;
+  border: solid 1px gray;
+  border-radius: 5px;
+  padding: 2px;
+}
+.show_user_delete{
+  position: absolute;
+  top:69px;
+  right:60px;
+  font-size: 5px;
+  border: solid 1px gray;
+  border-radius: 5px;
+  padding: 2px;
+}
+.show_user_detail{
+
 }

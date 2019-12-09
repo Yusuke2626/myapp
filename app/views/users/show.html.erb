@@ -1,4 +1,24 @@
 <div class="sidebar_contents">
+  <div class="mail_box">
+
+
+    <h5><%=link_to'メールボックス',"/users/#{current_user.id}/mails"%></h5>
+    <div class="receive_box">
+      <p><a href="/users/<%=current_user.id%>/mails"> <%= image_tag 'mail.png' %> 受信箱</a></p>
+      <% if @receive_mails %>
+        <%@receive_mails.each do |m|%>
+          <% if m.open_num == 0 %>
+            <div class="link">
+              <h5><a href="/users/<%=current_user.id%>/mails">新着:<%= m.tittle%></a></h5>
+            </div>
+          <%end%>
+        <%end%>
+      <% end %>
+    </div>
+    <div class="sending_box">
+      <p><a href="/users/<%=current_user.id%>/mails"> <%= image_tag 'mail.png' %> 送信箱</a></p>
+    </div>
+  </div>
   <div class="user_show_info">
     <p> ユーザー情報  </p>
     <p>名前:<%=current_user.name%></p>
@@ -7,8 +27,8 @@
     <p>お気に入りの空き家の数:<%=current_user.favorites.length%></p>
     <p>ユーザー情報の変更</p>
   </div>
-  <h5><%= link_to 'お気に入りの空き家をみる',"/users/#{current_user.id}/favorites", class:'get' %></h5>
-  <h5><%= link_to '空き家を投稿する',new_house_path, class:'get' %> </h5>
+  <h5><%= link_to '→ お気に入りの空き家をみる',"/users/#{current_user.id}/favorites", class:'get' %></h5>
+  <h5><%= link_to '→ 空き家を投稿する',new_house_path, class:'get' %> </h5>
 </div>
 
 <div class="main_contents">
@@ -34,6 +54,7 @@
             <% end %>
             </a>
           <% end %>
+
         </div>
         </div>
         <table class=show_house_list>
@@ -43,19 +64,19 @@
           <td><%= house.price %>円</td><td>test</td><td>test県test市test群...</td>
             <tr></tr>
         </table>
-        <p><%= link_to '投稿を削除', "/houses/#{house.id}", method: :delete ,class:'show_delete'%></p>
-        <p><%= link_to '投稿を編集',"/houses/#{house.id}/edit", class:'show_post_house' %></p>
-        <p class="show_detail"><a href="/houses/<%=house.id%>">詳細</a></p>
+        <p><%= link_to '投稿を削除', "/houses/#{house.id}", method: :delete ,class:'show_user_delete'%></p>
+        <p><%= link_to '投稿を編集',"/houses/#{house.id}/edit", class:'show_user_post_house' %></p>
+        <p class="show_user_detail"><a href="/houses/<%=house.id%>">詳細</a></p>
     </div>
     <% end %>
     <%= paginate @houses %>
     <% end %>
 
-  <!-- <p><%= link_to 'お気に入りの空き家をみる',"/users/#{current_user.id}/favorites", class:'get' %></p> -->
+  <!-- <p><%= link_to '→ お気に入りの空き家をみる',"/users/#{current_user.id}/favorites", class:'get' %></p> -->
 
-  <!-- <p><%= link_to '@空き家を投稿する',new_house_path, class:'get' %> </p> -->
+  <!-- <p><%= link_to '→空き家を投稿する',new_house_path, class:'get' %> </p> -->
 </div>
-<div class="adv_contents">
+<!-- <div class="adv_contents">
   <h5>広告入れたい</h5>
   <div class="inaka_photo">
     <img src="https://spi-ra.jp/wp-content/uploads/2019/06/38477617_m-1080x380.jpg" class="photo_image">
@@ -68,4 +89,4 @@
   <div class="index_box">
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQChRe6l5ne8y8iGvnMfRVeqZ4wM_k-149EyCyrZloJErOnKjuI&s" class="photo_image">
   </div>
-</div>
+</div> -->

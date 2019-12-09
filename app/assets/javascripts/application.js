@@ -13,11 +13,12 @@
 //= require jquery
 //= require rails-ujs
 //= require activestorage
-
+//= require underscore
+//= require gmaps/google
 //= require_tree .
-
-$(function(){
-  $('.show_house_image_list').slick({
+var $s = jQuery.noConflict();
+$s(function(){
+  $s('.show_house_image_list').slick({
     dots: true,
     infinite: true,
     speed: 500,

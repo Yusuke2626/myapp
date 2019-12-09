@@ -1,8 +1,50 @@
+<script src="//maps.google.com/maps/api/js?key=<%=ENV["GOOGLE_API_KEY"]%>"></script>
 <div class="sidebar_contents">
-  <p>検索とか</p>
-  <p>都道府県 プルダウンで検索</p>
+  <div class="sidebar_form">
+  <br>
+    <!-- <h5>全国から探す</h5>
+    <a href="/houses">全ての空き家</a> -->
+    <%= form_for(@house,url:search_searches_path, method:'get') do |f| %>
+      <%= f.label :エリアから選ぶ, class:"form_text" %>
+      <%= f.select :prefecture_id, [["北海道",0],["東北エリア",1],["関東エリア",7],["中部エリア",14],["関西エリア",25],["中国エリア",32],["四国エリア",35],["九州、沖縄エリア",46]], include_blank: '選択して下さい'%>
+      <%= f.submit "検索" %>
+    <% end %>
+    <p></p><br><br>
+    <%= form_for(@house,url:search_prefectures_path, method:'get') do |f| %>
+      <%= f.label :都道府県から選ぶ, class:"form_text" %>
+      <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択して下さい' %>
+      <%= f.submit "検索" %>
+    <% end %>
+  </div>
+  <% if user_signed_in? %>
+  <div class="user_info">
+    <p> ユーザー情報 </p>
+    <p>名前:<%=current_user.name%></p>
+    <!-- <p>年齢:<%=current_user.age%></p> -->
+    <p>投稿した空き家の数:<%=current_user.houses.length%></p>
+    <p>お気に入りの空き家の数:<%=current_user.favorites.length%></p>
+    <p>ユーザー情報の変更</p>
+  </div>
+  <% end %>
+
 </div>
+
 <div class="main_contents">
+  <div class = "search_text">
+
+  <% if @house.prefecture_id == 0 %>
+    <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=0">北海道エリア ></a></h5>
+  <% elsif @house.prefecture_id == 1 ||@house.prefecture_id == 2||@house.prefecture_id == 3||@house.prefecture_id == 4||@house.prefecture_id == 5||@house.prefecture_id == 6 %>
+    <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=1">東北エリア ></a></h5>
+  <% elsif @house.prefecture_id == 7 %>
+    <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=1">関東エリア ></a></h5>
+  <% elsif @house.prefecture_id == 14 %>
+    <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=1">中部エリア ></a></h5>
+  <% elsif @house.prefecture_id == 23 %>
+    <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=1">関西エリア ></a></h5>
+  <% end %>
+
+  </div>
   <!-- <p>家の詳細</p> -->
   <div class="show_mypost_house">
     <p class="show_house_name"><a href="/houses/<%=@house.id%>"><%= @house.name %></a></p>
@@ -30,26 +72,60 @@
         </div>
       </div>
       <div class="map_box">
-        この辺に地図入れたい
+
+        <div id="map"></div>
+
+         <% if @address.present? %>
+          <!-- </address>%> -->
+          <script type="text/javascript">
+            handler = Gmaps.build('Google');
+            handler.buildMap({ provider: { scrollwheel: true }, internal: {id: 'map'}}, function(){
+              markers = handler.addMarkers([
+                {
+                  "lat": <%= @address.latitude %>,
+                  "lng": <%= @address.longitude %>,
+        		  "infowindow": '<p><%= @house.name %></p><p><%= @address.address %></p><p><%= link_to "Googleマップで見る" ,"https://maps.google.co.jp/maps?q=loc:#{@address.latitude},#{@address.longitude}&iwloc=J",target: "_blank" %></p>'
+                }
+              ]);
+              handler.bounds.extendWith(markers);
+              handler.fitMapToBounds();
+              handler.getMap().setZoom(11);
+            });
+          </script>
+        <%else%>
+        <% end %>
       </div>
       <table class=show_house_houselist>
         <tr>
-          <th>価格</th> <th>間取り</th> <th>所在地</th>
+          <th>価格</th> <th>間取り</th> <th>所在地</th><th>築年数</th>
         </tr>
-          <td><%= @house.price %>円</td><td><%=@house.madori%></td><td>test県test市test群...</td>
-        <tr>
-        </tr>
+          <td><%= @house.price %>円</td><td><%=@house.madori%></td><td>&nbsp;<% if @address.present? %> <%=@address.prefecture_code%><%=@address.address_city%> <%=@address.address_street%> <%=@address.address_building%> &ensp; <%else%><p>情報がありません</p><%end%></td>
+        <!-- <tr>
+          <td></td>
+        </tr> -->
       </table>
-      <% if current_user.id  == @house.user_id %>
-        <p><%= link_to '投稿を削除', "/houses/#{@house.id}", method: :delete ,class:'show_delete'%></p>
-        <p><%= link_to '投稿を編集',"/houses/#{@house.id}/edit", class:'show_post_house' %></p>
-      <% end %>
-      <% if !Favorite.exists?(user_id:current_user.id,house_id:@house.id)%>
-        <%= link_to "お気に入りに追加","/houses/#{@house.id}/add",method: :post ,class:"show_favorite_btn"%>
+      <div class="owner_link">
+      <% if user_signed_in?%>
+        <% if @user.id == current_user.id %>
+          <h5 class="owner_p">この空き家の投稿者 :あなた </h5>
+        <% else %>
+          <h5 class="owner_p">この空き家の投稿者 :<%= @user.name %> </h5>
+        <% end %>
+      <%end%>
+      </div>
+      <% if user_signed_in? %>
+        <% if current_user.id  == @house.user_id %>
+          <p><%= link_to '投稿を削除', "/houses/#{@house.id}", method: :delete ,class:'show_delete'%></p>
+          <p><%= link_to '投稿を編集',"/houses/#{@house.id}/edit", class:'show_post_house' %></p>
+        <% end %>
+        <% if !Favorite.exists?(user_id:current_user.id,house_id:@house.id)%>
+          <%= link_to "お気に入りに追加","/houses/#{@house.id}/add",method: :post ,class:"show_favorite_btn"%>
+        <% else %>
+          <%= link_to "お気に入り解除","/houses/#{@house.id}/add",method: :delete ,class:"show_favorite_btn" %>
+        <% end %>
       <% else %>
-        <%= link_to "お気に入り解除","/houses/#{@house.id}/add",method: :delete ,class:"show_favorite_btn" %>
+        <%= link_to "サインインしてお気に入りに追加しよう","/users/sign_in",method: :get ,class:"show_favorite_btn2"%>
       <% end %>
-
     <div class="qabox">
       <p>Q&Aコーナーです</p>
           <% @qatexts.each do |text| %>
@@ -71,19 +147,36 @@
           <% end %>
     </div>
       <% if current_user %>
-        <%= form_tag("/houses/#{@house.id}/qaforms", method: :post,id:"new_comment") do %>
-          <textarea cols="30" name="text" placeholder="コメントする" rows="2" class="qa_textbox"></textarea>
-          <input type="submit" value="SENT" class="qa_submit">
+        <%= form_for @qaform ,url:"/houses/#{@house.id}/qaforms" ,method:'post' do |f| %>
+          <%= f.text_field :text ,class:"qa_textbox",:placeholder => "Q&Aを入力"%>
+          <%= f.submit "送信" ,class:"qa_submit"%>
         <% end %>
+
+          <!-- <textarea cols="30" na_me="text" placeholder="コメントする" rows="2" class="qa_textbox"></textarea>
+          <input type="submit" value="SENT" class="qa_submit"> -->
+
       <% end %>
   <% end %>
   </div>
-
-  <h5>   →この空き家の所有者に問い合わせする</h5>
+  <!-- <p>jQuery稼働テスト(未稼働)</p>
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $("p").text("jQuery稼働テスト(稼働中)");
+    console.log('hello');
+  });
+  $('#new_comment').on('submit',function(e){
+    e.preventDefault();
+  console.log('good');});
+</script> -->
+<% if user_signed_in?%>
+  <% if current_user.id != @house.user_id%>
+    <h5><%= link_to '→所有者に購入申請をする', "/houses/#{@house.id}/mails/new", method: :get %> </h5>
+  <% end %>
+<%end%>
   <p class="back_houses"><a href="/houses"> 一覧に戻る</a></p>
 
 </div>
-<div class="adv_contents">
+<!-- <div class="adv_contents">
   <div class="inaka_photo">
     <img src="https://spi-ra.jp/wp-content/uploads/2019/06/38477617_m-1080x380.jpg" class="photo_image">
   </div>
@@ -95,4 +188,4 @@
   <div class="index_box">
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQChRe6l5ne8y8iGvnMfRVeqZ4wM_k-149EyCyrZloJErOnKjuI&s" class="photo_image">
   </div>
-</div>
+</div> -->

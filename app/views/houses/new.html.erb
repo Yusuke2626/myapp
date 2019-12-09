@@ -1,54 +1,81 @@
 <div class="new_box">
 
   <div class="new_main_contents">
-  <h6>空き家を投稿する</h6>
+    <h6>空き家を投稿する</h6>
+    <div class="new_part_1">
 
+      <%= form_for [@house] do |f| %>
+        <!-- <div class="field",id="pref_id">
+          <%= f.label :address, "都道府県" ,class:'new_form'%><br>
+          <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択して下さい' ,type:"hidden"%>
+        </div> -->
+        <div class="field",id="pref_id">
+          <%# <%= f.label :address, "都道府県" ,class:'new_form'%>
+          <%= f.hidden_field :prefecture_id, include_blank: '選択して下さい' %>
+        </div>
+        <div class="field">
+          <%= f.label :'家の名前',class:'new_form' %><br>
+          <%= f.text_field :name ,:placeholder => "名前" %>
+        </div>
+        <div class="field">
+           <%= f.label :'家の価格',class:'new_form' %><br>
+           <%= f.number_field :price ,:placeholder => "価格"  %>万円
+        </div>
+        <div class="field">
+           <%= f.label :'間取り',class:'new_form' %><br>
+           <%= f.text_field :madori ,:placeholder => "”例、3LDK”"  %>万円
+        </div>
+        <%= f.fields_for :images do |i| %>
+          <p>空き家の写真を追加</p>
+          <div class="img_post_box">
+            <div class="img_post1" onClick="$i('#img_file1').click()"> ➕画像を選択</div>
+            <div class="img_post2" onClick="$i('#img_file2').click()"> ➕画像を選択</div>
+            <div class="img_post3" onClick="$i('#img_file3').click()"> ➕画像を選択</div>
+            <div class="img_post4" onClick="$i('#img_file4').click()"> ➕画像を選択</div>
+            <div class="img_post5" onClick="$i('#img_file5').click()"> ➕画像を選択</div>
+          </div>
+         <div class="field" id="form_image">
+            <% i.label :image1 %>
+            <%= i.file_field :image1,id:"img_file1",style:"display:none"%>
+          </div>
+          <div class="field" id="form_image">
+            <% i.label :image2 %>
+            <%= i.file_field :image2,id:"img_file2",style:"display:none"%>
+          </div>
+          <div class="field">
+            <% i.label :image3 %>
+            <%= i.file_field :image3,id:"img_file3",style:"display:none" %>
+          </div>
+          <div class="field">
+            <% i.label :image4 %>
+            <%= i.file_field :image4,id:"img_file4",style:"display:none" %>
+          </div>
+          <div class="field">
+            <% i.label :image5 %>
+            <%= i.file_field :image5,id:"img_file5",style:"display:none" %>
+          </div>
+        <% end %>
+    </div>
 
-  <%= form_for [@house] do |f| %>
-    <div class="field">
-      <%= f.label :address, "都道府県" ,class:'new_form'%><br>
-      <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択して下さい' %>
-    </div>
-    <div class="field">
-      <%= f.label :'家の名前',class:'new_form' %><br>
-      <%= f.text_field :name ,:placeholder => "名前" %>
-    </div>
-    <div class="field">
-       <%= f.label :'家の価格',class:'new_form' %><br>
-       <%= f.number_field :price ,:placeholder => "価格"  %>万円
-    </div>
-    <div class="field">
-       <%= f.label :'間取り',class:'new_form' %><br>
-       <%= f.text_field :madori ,:placeholder => "”例、3LDK”"  %>万円
-    </div>
+    <div class="new_part_2">
+        <h5>空き家の所在地を入力</h5>
+        <%= f.fields_for :addresses do |a| %>
+        <p>郵便番号を入力(町名まで自動入力されます)</p>
+        <%= a.text_field :postcode, class:'new_form_input'%>
+        <p>都道府県</p>
+        <%= a.text_field :prefecture_code, collection: JpPrefecture::Prefecture.all, :value_method => :name, include_blank: '都道府県' %><br>
+        <p>市区町村</p>
+        <%= a.text_field :address_city %>
+        <p>町名</p>
+        <%= a.text_field :address_street %>
+        <p>続きを入力</p>
+        <%= a.text_field :address_building %>
+        <% end %>
+      <div class="actions">
 
-    <%= f.fields_for :images do |i| %>
-      <p>画像を選択してください(*最大5枚)</p>
-      <div class="field">
-        <% i.label :image1 %>
-        <%= i.file_field :image1 %>
+      <%= f.submit "登録する" ,class:"new_submit"%>
       </div>
-      <div class="field">
-        <% i.label :image2 %>
-        <%= i.file_field :image2 %>
-      </div>
-      <div class="field">
-        <% i.label :image3 %>
-        <%= i.file_field :image3 %>
-      </div>
-      <div class="field">
-        <% i.label :image4 %>
-        <%= i.file_field :image4 %>
-      </div>
-      <div class="field">
-        <% i.label :image5 %>
-        <%= i.file_field :image5 %>
-      </div>
-      <% end %>
-    <div class="actions">
-    <%= f.submit "登録する" %>
-    </div>
   <% end %>
-
+    </div>
   </div>
 </div>
