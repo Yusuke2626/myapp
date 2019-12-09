@@ -44,8 +44,5 @@ class SearchsController < HousesController
             @house = House.find_by(prefecture_id:39)
 
           end
-
-
-
-
+        end  
 end
