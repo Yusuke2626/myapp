@@ -1,7 +1,7 @@
 class SearchesController < HousesController
 
           def index
-            binding.pry
+            # binding.pry
             input = params[:prefecture_id].to_i
 
             if input == 0
@@ -42,7 +42,7 @@ class SearchesController < HousesController
               @house = House.find_by(prefecture_id:39)
 
             end
-            binding.pry
+            # binding.pry
           end
 
 
