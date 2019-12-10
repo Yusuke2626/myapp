@@ -5,7 +5,8 @@ class CreateMessages < ActiveRecord::Migration[5.2]
       t.string :text
       t.integer :to_user_id
       t.integer :user_id
-
+      t.integer :open_num
+      t.integer :house_id
       t.timestamps
     end
   end
