@@ -17,9 +17,9 @@ class HousesController < ApplicationController
 
   def create
     @house = current_user.houses.new(house_params)
-      binding.pry
+
     @house.save
-    binding.pry
+
     # house.pref_change
     # binding.pry
     # @house.create
@@ -66,7 +66,7 @@ class HousesController < ApplicationController
 
 
   def search
-     binding.pry
+    
 
     input = params[:id]
 
