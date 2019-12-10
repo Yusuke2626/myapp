@@ -11,12 +11,15 @@ class HousesController < ApplicationController
     @house = House.new
     @house.images.build
     @house.addresses.build
+
     # @prefcture = Prefecture.find(params[:prefecture_id])
   end
 
   def create
     @house = current_user.houses.new(house_params)
+      binding.pry
     @house.save
+    binding.pry
     # house.pref_change
     # binding.pry
     # @house.create

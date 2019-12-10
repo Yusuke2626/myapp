@@ -3,9 +3,9 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 
-$s = jQuery.noConflict()
-$s ->
-  $s("#house_addresses_attributes_0_postcode").jpostal({
+# $ = jQuery.noConflict()
+$ ->
+  $("#house_addresses_attributes_0_postcode").jpostal({
     postcode: ["#house_addresses_attributes_0_postcode"],
     address: {
                 "#house_addresses_attributes_0_prefecture_code" : "%3",

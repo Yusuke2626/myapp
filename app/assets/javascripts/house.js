@@ -1,17 +1,17 @@
-var $i = jQuery.noConflict();
+// var $i = jQuery.noConflict();
 
-$i(function(){
-  $fileField = $i('#img_file1');
+$(function(){
+  $fileField = $('#img_file1');
 
-   $i($fileField).on('change',$fileField,function(e){
+   $($fileField).on('change',$fileField,function(e){
      file = e.target.files[0]
      reader = new FileReader();
-     $preview = $i(".img_post1");
-     
+     $preview = $(".img_post1");
+
      reader.onload = (function(file){
        return function(e){
          $preview.empty();
-         $preview.append($i('<img>').attr({
+         $preview.append($('<img>').attr({
            src:e.target.result,
            width:"100%",
            class:"preview",
@@ -22,19 +22,19 @@ $i(function(){
      reader.readAsDataURL(file);
    });
 
-   $fileField2 = $i('#img_file2')
+   $fileField2 = $('#img_file2')
 
-    $i($fileField2).on('change',$fileField2,function(e){
+    $($fileField2).on('change',$fileField2,function(e){
       file = e.target.files[0]
       reader = new FileReader();
-      $preview = $i(".img_post2");
+      $preview = $(".img_post2");
 
       // console.log($preview);
 
       reader.onload = (function(file){
         return function(e){
           $preview.empty();
-          $preview.append($i('<img>').attr({
+          $preview.append($('<img>').attr({
             src:e.target.result,
             width:"100%",
             class:"preview",
@@ -45,19 +45,19 @@ $i(function(){
       reader.readAsDataURL(file);
     });
 
-    $fileField3 = $i('#img_file3')
+    $fileField3 = $('#img_file3')
 
-     $i($fileField3).on('change',$fileField3,function(e){
+     $($fileField3).on('change',$fileField3,function(e){
        file = e.target.files[0]
        reader = new FileReader();
-       $preview = $i(".img_post3");
+       $preview = $(".img_post3");
 
        // console.log($preview);
 
        reader.onload = (function(file){
          return function(e){
            $preview.empty();
-           $preview.append($i('<img>').attr({
+           $preview.append($('<img>').attr({
              src:e.target.result,
              width:"100%",
              class:"preview",
@@ -68,19 +68,19 @@ $i(function(){
        reader.readAsDataURL(file);
      });
 
-     $fileField4 = $i('#img_file4')
+     $fileField4 = $('#img_file4')
 
-      $i($fileField4).on('change',$fileField4,function(e){
+      $($fileField4).on('change',$fileField4,function(e){
         file = e.target.files[0]
         reader = new FileReader();
-        $preview = $i(".img_post4");
+        $preview = $(".img_post4");
 
         // console.log($preview);
 
         reader.onload = (function(file){
           return function(e){
             $preview.empty();
-            $preview.append($i('<img>').attr({
+            $preview.append($('<img>').attr({
               src:e.target.result,
               width:"100%",
               class:"preview",
@@ -91,19 +91,19 @@ $i(function(){
         reader.readAsDataURL(file);
       });
 
-      $fileField5 = $i('#img_file5')
+      $fileField5 = $('#img_file5')
 
-       $i($fileField5).on('change',$fileField5,function(e){
+       $($fileField5).on('change',$fileField5,function(e){
          file = e.target.files[0]
          reader = new FileReader();
-         $preview = $i(".img_post5");
+         $preview = $(".img_post5");
 
          // console.log($preview);
 
          reader.onload = (function(file){
            return function(e){
              $preview.empty();
-             $preview.append($i('<img>').attr({
+             $preview.append($('<img>').attr({
                src:e.target.result,
                width:"100%",
                class:"preview",
@@ -114,9 +114,10 @@ $i(function(){
          reader.readAsDataURL(file);
        });
 
-       $i("#house_addresses_attributes_0_address_building").change(function () {
+       $("#house_addresses_attributes_0_address_building").change(function () {
+         console.log('aa')
        var str = "";
-       str = $i("#house_addresses_attributes_0_prefecture_code").val();
+       str = $("#house_addresses_attributes_0_prefecture_code").val();
        console.log(str);
        if(str=="北海道"){
          str = 0
@@ -214,8 +215,11 @@ $i(function(){
        }else if(str=="沖縄県"){
          str = 46
        }
+       console.log(str);
 
-       $i("#house_prefecture_id").val(str);
+       $("#house_prefecture_id").val(str);
+       var a = $("#house_prefecture_id").val();
+        console.log(a);
        });
 
 

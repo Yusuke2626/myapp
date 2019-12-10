@@ -67,7 +67,7 @@ Jpostal.Database.prototype.get = function (i_postcode) {
     case 6:
         head3 = i_postcode.substr(0, 3);
         address = this.find(head3);
-        address = $s.extend(defaults, address);
+        address = $.extend(defaults, address);
         break;
 
     case 7:
@@ -144,7 +144,7 @@ Jpostal.Database.prototype.request = function (i_postcode, i_callback) {
 Jpostal.Database.prototype.ajax = function (options) {
     "use strict";
 
-    $s.ajax(options);
+    $.ajax(options);
 };
 
 Jpostal.Database.prototype.save = function (i_data) {
@@ -269,7 +269,7 @@ Jpostal.Jpostal.prototype.displayAddress = function () {
         if (that.isSelectTagForPrefecture(key, format)) {
             that.setSelectTagForPrefecture(key, value);
         } else {
-            $s(key).val(value);
+            $(key).val(value);
             that.trigger(key);
         }
     });
@@ -285,7 +285,7 @@ Jpostal.Jpostal.prototype.isSelectTagForPrefecture = function (i_key, i_fmt) {
     case '%3':
     case '%p':
     case '%prefecture':
-        if ($s(i_key).get(0).tagName.toUpperCase() === 'SELECT') {
+        if ($(i_key).get(0).tagName.toUpperCase() === 'SELECT') {
             f = true;
         } else {
             f = false;
@@ -707,7 +707,7 @@ Jpostal.Jpostal.prototype.scanPostcode = function () {
         //    2        1234          123
         //    4        1234567       1234567
         //    ----------------------------------------
-        s = String($s(this.options.postcode[0]).val());
+        s = String($(this.options.postcode[0]).val());
         if (0 <= s.search(/^([0-9]{3})([0-9A-Za-z]{4})/)) {
             // case 4
             s = s.substr(0, 7);

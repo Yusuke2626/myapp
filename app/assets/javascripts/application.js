@@ -16,9 +16,9 @@
 //= require underscore
 //= require gmaps/google
 //= require_tree .
-var $s = jQuery.noConflict();
-$s(function(){
-  $s('.show_house_image_list').slick({
+// var $ = jQuery.noConflict();
+$(function(){
+  $('.show_house_image_list').slick({
     dots: true,
     infinite: true,
     speed: 500,

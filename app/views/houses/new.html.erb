@@ -5,13 +5,8 @@
     <div class="new_part_1">
 
       <%= form_for [@house] do |f| %>
-        <!-- <div class="field",id="pref_id">
-          <%= f.label :address, "都道府県" ,class:'new_form'%><br>
-          <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択して下さい' ,type:"hidden"%>
-        </div> -->
         <div class="field",id="pref_id">
-          <%# <%= f.label :address, "都道府県" ,class:'new_form'%>
-          <%= f.hidden_field :prefecture_id, include_blank: '選択して下さい' %>
+          <%= f.hidden_field :prefecture_id, value:'',include_blank: '選択して下さい' %>
         </div>
         <div class="field">
           <%= f.label :'家の名前',class:'new_form' %><br>
@@ -28,11 +23,11 @@
         <%= f.fields_for :images do |i| %>
           <p>空き家の写真を追加</p>
           <div class="img_post_box">
-            <div class="img_post1" onClick="$i('#img_file1').click()"> ➕画像を選択</div>
-            <div class="img_post2" onClick="$i('#img_file2').click()"> ➕画像を選択</div>
-            <div class="img_post3" onClick="$i('#img_file3').click()"> ➕画像を選択</div>
-            <div class="img_post4" onClick="$i('#img_file4').click()"> ➕画像を選択</div>
-            <div class="img_post5" onClick="$i('#img_file5').click()"> ➕画像を選択</div>
+            <div class="img_post1" onClick="$('#img_file1').click()"> ➕画像を選択</div>
+            <div class="img_post2" onClick="$('#img_file2').click()"> ➕画像を選択</div>
+            <div class="img_post3" onClick="$('#img_file3').click()"> ➕画像を選択</div>
+            <div class="img_post4" onClick="$('#img_file4').click()"> ➕画像を選択</div>
+            <div class="img_post5" onClick="$('#img_file5').click()"> ➕画像を選択</div>
           </div>
          <div class="field" id="form_image">
             <% i.label :image1 %>
