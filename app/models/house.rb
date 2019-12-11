@@ -15,7 +15,7 @@ class House < ApplicationRecord
   has_many:addresses, :dependent => :destroy
   accepts_nested_attributes_for :addresses
 
-  # belongs_to:prefecture
+  belongs_to:prefecture
 
 
   accepts_nested_attributes_for :images
