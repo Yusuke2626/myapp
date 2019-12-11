@@ -4,6 +4,7 @@ class HousesController < ApplicationController
     @all_houses = House.all
     @houses = House.all.page(params[:page]).per(5).order('created_at DESC')
     @house = House.new
+    Prefucture.delete_all
 
   end
 
@@ -66,7 +67,7 @@ class HousesController < ApplicationController
 
 
   def search
-    
+
 
     input = params[:id]
 
