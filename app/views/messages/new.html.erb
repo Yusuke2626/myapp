@@ -2,13 +2,13 @@
   <div class="mail_box">
     <h5><%=link_to'メールボックス',"/users/#{current_user.id}/mails"%></h5>
     <div class="receive_box">
-      <p><a href="/users/<%=current_user.id%>/mails"> <%= image_tag 'mail.png' %>受信箱</a></p>
+      <p><a href="/users/<%=current_user.id%>/messages"> <%= image_tag 'mail.png' %>受信箱</a></p>
         <% if @new_mail %>
           <% @new_mail.each do |m|%>
             <div class="link">
 
 
-            <h5><a href="/users/<%=current_user.id%>/mails">新着:<%= m.tittle%></a></h5>
+            <h5><a href="/users/<%=current_user.id%>/messages">新着:<%= m.tittle%></a></h5>
             </div>
           <%end%>
         <%end%>
@@ -41,7 +41,7 @@
         <h5> "<%=@from_user.name%>" さんへメッセージを返信</h5>
       <%end%>
 
-      <%= form_for @mail,url:house_mails_path,method:"post" do |f| %>
+      <%= form_for @mail,url:house_messages_path,method:"post" do |f| %>
         <% if current_user.id == @house.user.id %>
           <%= f.hidden_field :to_user_id ,value: @from_user.id %>
           <%= f.hidden_field :open_num ,value: 0 %>

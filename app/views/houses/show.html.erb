@@ -170,7 +170,7 @@
 </script> -->
 <% if user_signed_in?%>
   <% if current_user.id != @house.user_id%>
-    <h5><%= link_to '→所有者に購入申請をする', "/houses/#{@house.id}/mails/new", method: :get %> </h5>
+    <h5><%= link_to '→所有者に購入申請をする', "/houses/#{@house.id}/messages/new", method: :get %> </h5>
   <% end %>
 <%end%>
   <p class="back_houses"><a href="/houses"> 一覧に戻る</a></p>

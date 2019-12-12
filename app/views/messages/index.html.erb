@@ -1,14 +1,14 @@
 <div class="sidebar_contents">
   <div class="mail_box">
-    <h5><%=link_to'メールボックス',"/users/#{current_user.id}/mails"%></h5>
+    <h5><%=link_to'メールボックス',"/users/#{current_user.id}/messages"%></h5>
     <div class="receive_box">
 
-      <p><a href="/users/<%=current_user.id%>/mails"> <%= image_tag 'mail.png' %> 受信箱</a></p>
+      <p><a href="/users/<%=current_user.id%>/messages"> <%= image_tag 'mail.png' %> 受信箱</a></p>
       <% if @new_mail%>
         <%@new_mail.each do |m|%>
           <% if  m.open_num == 0 %>
             <div class="link">
-              <h5><a href="/users/<%=current_user.id%>/mails">新着:<%= m.tittle%></a></h5>
+              <h5><a href="/users/<%=current_user.id%>/messages">新着:<%= m.tittle%></a></h5>
             </div>
           <%end%>
         <%end%>
@@ -16,7 +16,7 @@
 
     </div>
     <div class="sending_box">
-      <p><a href="/users/<%=current_user.id%>/mails"><%= image_tag 'mail.png' %> 送信箱</a></p>
+      <p><a href="/users/<%=current_user.id%>/messages"><%= image_tag 'mail.png' %> 送信箱</a></p>
     </div>
   </div>
   <div class="user_show_info">
@@ -56,7 +56,7 @@
           <div class="mail_text_box">
           <% @user=User.find(mail.user_id) %>
           <% if mail.to_user_id == current_user.id && mail.open_num == 0 %>
-            <h5><%=image_tag 'mail.png'%> <%= link_to "#{mail.tittle}","/houses/#{mail.house_id}/mails/#{mail.id}"%> &emsp; from:<%= @user.name%></h5>
+            <h5><%=image_tag 'mail.png'%> <%= link_to "#{mail.tittle}","/houses/#{mail.house_id}/messages/#{mail.id}"%> &emsp; from:<%= @user.name%></h5>
             <%num+=1%>
           <%end%>
           </div>
@@ -77,7 +77,7 @@
       <% if @receive_mails%>
         <% @receive_mails.each do |mail| %>
             <% @user=User.find(mail.user_id) %>
-            <h5><%=image_tag 'mail.png'%>&nbsp;<%= link_to "#{mail.tittle}","/houses/#{mail.house_id}/mails/#{mail.id}"%>&emsp; &nbsp; from:<%= @user.name%></h5>
+            <h5><%=image_tag 'mail.png'%>&nbsp;<%= link_to "#{mail.tittle}","/houses/#{mail.house_id}/messages/#{mail.id}"%>&emsp; &nbsp; from:<%= @user.name%></h5>
         <%end%>
       <% else %>
          <h5>受信メッセージはありません</h5>
@@ -92,7 +92,7 @@
         <% @send_mails.each do |mail| %>
             <div class="mail_text_box">
               <% @user=User.find(mail.to_user_id) %>
-              <h5><a href="/houses/<%=mail.house_id%>/mails/<%=mail.id%>"><%=image_tag 'mail.png'%>&nbsp;<%=mail.tittle%>&emsp; &nbsp; to:<%= @user.name%></a></h5>
+              <h5><a href="/houses/<%=mail.house_id%>/messages/<%=mail.id%>"><%=image_tag 'mail.png'%>&nbsp;<%=mail.tittle%>&emsp; &nbsp; to:<%= @user.name%></a></h5>
             </div>
         <%end%>
       <%end%>

@@ -30,7 +30,7 @@ class MessagesController < ApplicationController
 
 
     def index
-      @mails = current_user.mails.all
+      @mails = current_user.messages.all
       @receive_mails = Message.where(to_user_id:params[:user_id]).page(params[:page]).per(5).order('created_at DESC')
       @send_mails = Message.where(user_id:params[:user_id]).page(params[:page]).per(5).order('created_at DESC')
       @new_mail = @receive_mails.where(open_num:0).page(params[:page]).per(5).order('created_at DESC')
@@ -42,7 +42,7 @@ class MessagesController < ApplicationController
 
     def show
       @mail = Message.find(params[:id])
-      @mails = current_user.mails.all
+      @mails = current_user.messages.all
       @receive_mails = Message.where(to_user_id:current_user.id)
       @new_mail = @receive_mails.where(open_num:0)
       @send_mails = Message.where(user_id:params[:user_id])
