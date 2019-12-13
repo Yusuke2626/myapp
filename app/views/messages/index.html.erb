@@ -26,7 +26,7 @@
     <!-- <p>年齢:<%=current_user.age%></p> -->
     <p>投稿した空き家の数:<%=current_user.houses.length%></p>
     <p>お気に入りの空き家の数:<%=current_user.favorites.length%></p>
-    <p>ユーザー情報の変更</p>
+    <p><a href="/users/edit">ユーザー情報の変更</a></p>
   </div>
   <h5><%= link_to '→ お気に入りの空き家をみる',"/users/#{current_user.id}/favorites", class:'get' %></h5>
   <h5><%= link_to '→ 空き家を投稿する',new_house_path, class:'get' %> </h5>

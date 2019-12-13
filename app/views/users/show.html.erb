@@ -2,7 +2,7 @@
   <div class="mail_box">
 
 
-    <h5><%=link_to'メールボックス',"/users/#{current_user.id}/messages"%></h5>
+    <h5 class="mail_box_tittle"><%=link_to'メールボックス',"/users/#{current_user.id}/messages"%></h5>
     <div class="receive_box">
       <p><a href="/users/<%=current_user.id%>/messages"> <%= image_tag 'mail.png' %> 受信箱</a></p>
       <% if @receive_mails %>
@@ -20,12 +20,11 @@
     </div>
   </div>
   <div class="user_show_info">
-    <p> ユーザー情報  </p>
+    <p class="mail_box_tittle"> ユーザー情報  </p>
     <p>名前:<%=current_user.name%></p>
-    <!-- <p>年齢:<%=current_user.age%></p> -->
     <p>投稿した空き家の数:<%=current_user.houses.length%></p>
     <p>お気に入りの空き家の数:<%=current_user.favorites.length%></p>
-    <p>ユーザー情報の変更</p>
+    <p><a href="/users/edit">ユーザー情報の変更</a></p>
   </div>
   <h5><%= link_to '→ お気に入りの空き家をみる',"/users/#{current_user.id}/favorites", class:'get' %></h5>
   <h5><%= link_to '→ 空き家を投稿する',new_house_path, class:'get' %> </h5>
@@ -61,7 +60,7 @@
           <tr>
             <th>価格</th><th>間取り</th><th>所在地</th>
           </tr>
-          <td><%= house.price %>円</td><td>test</td><td>test県test市test群...</td>
+          <td><%= house.price %>万円</td><td><%=house.madori%></td><td><%=house.prefecture.name %><%@address=Address.find_by(house_id:house.id)%><%if @address%><%=@address.address_city%><%end%></td>
             <tr></tr>
         </table>
         <p><%= link_to '投稿を削除', "/houses/#{house.id}", method: :delete ,class:'show_user_delete'%></p>

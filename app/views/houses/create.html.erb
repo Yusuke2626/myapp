@@ -1,27 +1,10 @@
 <div class="sidebar_contents">
-<p>heloo my page</p>
 </div>
 <div class="main_contents">
 
-  <p> 投稿が完了しました </p>
+  <p> 登録が完了しました。</p>
+  <br /><br /><br />
 
-  <p> マイページに戻る </p>
-
-
-
-  <p>＠お気に入りの空き家一覧</p>
-  <p><%= link_to '@空き家を投稿する',new_house_path, class:'get' %> </p>
-<!-- </div>
-<div class="adv_contents">
-  <div class="inaka_photo">
-    <img src="https://spi-ra.jp/wp-content/uploads/2019/06/38477617_m-1080x380.jpg" class="photo_image">
-  </div>
-
-  <div class="inaka_photo2">
-    <img src="https://spi-ra.jp/wp-content/uploads/2019/06/38477617_m-1080x380.jpg" class="photo_image">
-  </div>
-
-  <div class="index_box">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQChRe6l5ne8y8iGvnMfRVeqZ4wM_k-149EyCyrZloJErOnKjuI&s" class="photo_image">
-  </div>
-</div> -->
+  <p><%= link_to '→マイページに戻る',"/users/#{current_user.id}", class:'get' %> </p>
+  <br />
+  <p><%= link_to '→トップに戻る',houses_path, class:'get' %> </p>
