@@ -47,19 +47,19 @@
           <%= f.hidden_field :open_num ,value: 0 %>
           <div class="field">
             <h5><%=f.label :'タイトル', class:'mail_form_title'%></h5>
-            <%= f.text_field :tittle,value:"Re:" ,class:"mail_new_tittle" %>
+            <%= f.text_field :tittle,value:"Re:" ,class:"mail_new_tittle",required:true %>
           </div>
         <% else %>
           <%= f.hidden_field :to_user_id ,value: @house.user.id %>
           <%= f.hidden_field :open_num ,value: 0 %>
           <div class="field">
             <h5><%=f.label :'タイトル', class:'mail_form_title'%></h5>
-            <%= f.text_field :tittle,class:"mail_new_tittle" %>
+            <%= f.text_field :tittle,class:"mail_new_tittle" ,required:true%>
           </div>
         <% end %>
         <div class="field">
           <h5> <%=f.label :'本文'%></h5>
-          <%= f.text_area :text,class:'mail_text' %>
+          <%= f.text_area :text,class:'mail_text' ,required:true%>
         </div>
         <div class="field">
 

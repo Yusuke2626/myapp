@@ -29,8 +29,6 @@ $(function(){
       reader = new FileReader();
       $preview = $(".img_post2");
 
-      // console.log($preview);
-
       reader.onload = (function(file){
         return function(e){
           $preview.empty();
@@ -51,8 +49,6 @@ $(function(){
        file = e.target.files[0]
        reader = new FileReader();
        $preview = $(".img_post3");
-
-       // console.log($preview);
 
        reader.onload = (function(file){
          return function(e){
@@ -75,8 +71,6 @@ $(function(){
         reader = new FileReader();
         $preview = $(".img_post4");
 
-        // console.log($preview);
-
         reader.onload = (function(file){
           return function(e){
             $preview.empty();
@@ -98,8 +92,6 @@ $(function(){
          reader = new FileReader();
          $preview = $(".img_post5");
 
-         // console.log($preview);
-
          reader.onload = (function(file){
            return function(e){
              $preview.empty();
@@ -115,13 +107,10 @@ $(function(){
        });
 
        $("#house_addresses_attributes_0_address_building").change(function () {
-         console.log('aa')
        var str = "";
        str = $("#house_addresses_attributes_0_prefecture_code").val();
-       console.log(str);
        if(str=="北海道"){
          str = 0
-         console.log(str);
        }else if(str=="青森県"){
          str = 1
        }else if(str=="岩手県"){
@@ -215,64 +204,44 @@ $(function(){
        }else if(str=="沖縄県"){
          str = 46
        }
-       console.log(str);
+
 
        $("#house_prefecture_id").val(str);
        var a = $("#house_prefecture_id").val();
-        console.log(a);
+
        });
 
+  $('#new_qaform').on('submit',function(e){
+
+    e.preventDefault();
+    var formData = new FormData(this);
+    var url = $(this).attr('action');
+
+    $.ajax({
+      url:url,
+      type:'POST',
+      data:formData,
+      dataType:'json',
+      processData:false,
+      contentType:false
+    })
+    .done(function(text){
+      var user_id       = $('#user_id').text();
+      var house_user_id = $('#house_user_id').text();
+      var user_name     = $('#user_name').text();
+      var last_div      = $('.qabox').last();
+
+      if (user_id === house_user_id){
+        $(`<div class="qa_name"><p>オーナー</p></div><div class="baloon_left"><p>${text.text}</p></div>`).appendTo('.qabox');
+      }else{
+        $(`<div class="qa_name_right"><p>${user_name}</p></div><div class="baloon_right"><p>${text.text}</p></div>`).appendTo('.qabox');
+      }
+      $('.qa_submit').attr('disabled',false)
+      $('.qa_textbox').val('');
+      $('.qabox').scrollTop(99999);
 
 
+    });
+  })
 
 });
-
-//
-//
-// var $d = jQuery.noConflict();
-// $d(function(){
-//       function buildHTML(text){
-//
-//         if($d(text.user_id) == $d(text.house_user_id)){
-//           var html =    `<div class="qa_name">
-//                           <p>オーナー</p>
-//                          </div>
-//                          <div class="baloon_left">
-//                            <p>${text.text}</p>
-//                          </div>`
-//           return html
-//                        }else{
-//           var html =    `<div class="qa_name_right">
-//                            <p>${text.user_name}</p>
-//                          </div>
-//                          <div class="baloon_right">
-//                            <p>${text.text}</p>
-//                          </div>`
-//           return html } }
-//
-//         $d('#new_comment').on('submit',function(e){
-//           e.preventDefault();
-//           console.log('hello');
-//           var formData = new FormData(this);
-//           // var input = $d('.qa_textbox').val();
-//           var href = window.location.href +'/qaforms'
-//           console.log(this);
-//           $d.ajax({
-//             url:href,
-//             type: "POST",
-//             data:formData,
-//             dataType:'json',
-//             processData:false,
-//             concentType:false,
-//             traditional: true
-//           })
-//           .done(function(data){
-//             console.log(data);
-//             var html = buildHTML(data);
-//             console.log(html)
-//             $d('.qabox').append(html);
-//             // $d('.qa_textbox').val('');
-//           })
-//         });
-//
-// });

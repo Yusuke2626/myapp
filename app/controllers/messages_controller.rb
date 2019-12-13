@@ -15,12 +15,11 @@ class MessagesController < ApplicationController
     end
 
     def create
-      # @house = House.find(params[:house_id])
+
       @mail = Message.new(tittle:mail_params[:tittle],text:mail_params[:text],open_num:mail_params[:open_num],to_user_id:mail_params[:to_user_id],user_id:current_user.id,house_id:params[:house_id])
-      # binding.pry
       @mail.save!
       flash[:notice] = "メールの送信が完了しました。"
-       # @mail = Mail.new(mail_params)
+
     end
 
     def search

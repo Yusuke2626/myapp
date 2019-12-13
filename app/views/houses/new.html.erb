@@ -10,15 +10,15 @@
         </div>
         <div class="field">
           <%= f.label :'家の名前',class:'new_form' %><br>
-          <%= f.text_field :name ,:placeholder => "名前" %>
+          <%= f.text_field :name ,:placeholder => "名前" ,required:true%>
         </div>
         <div class="field">
            <%= f.label :'家の価格',class:'new_form' %><br>
-           <%= f.number_field :price ,:placeholder => "価格"  %>万円
+           <%= f.number_field :price ,:placeholder => "価格"  ,required:true%>万円
         </div>
         <div class="field">
            <%= f.label :'間取り',class:'new_form' %><br>
-           <%= f.text_field :madori ,:placeholder => "”例、3LDK”"  %>万円
+           <%= f.text_field :madori ,:placeholder => "”例、3LDK”"  ,required:true%>万円
         </div>
         <%= f.fields_for :images do |i| %>
           <p>空き家の写真を追加</p>
@@ -31,7 +31,7 @@
           </div>
          <div class="field" id="form_image">
             <% i.label :image1 %>
-            <%= i.file_field :image1,id:"img_file1",style:"display:none"%>
+            <%= i.file_field :image1,id:"img_file1",style:"display:none",required:true%>
           </div>
           <div class="field" id="form_image">
             <% i.label :image2 %>
@@ -56,15 +56,15 @@
         <h5>空き家の所在地を入力</h5>
         <%= f.fields_for :addresses do |a| %>
         <p>郵便番号を入力(町名まで自動入力されます)</p>
-        <%= a.text_field :postcode, class:'new_form_input'%>
+        <%= a.text_field :postcode, class:'new_form_input',required:true%>
         <p>都道府県</p>
         <%= a.text_field :prefecture_code, collection: JpPrefecture::Prefecture.all, :value_method => :name, include_blank: '都道府県' %><br>
         <p>市区町村</p>
-        <%= a.text_field :address_city %>
+        <%= a.text_field :address_city ,required:true%>
         <p>町名</p>
-        <%= a.text_field :address_street %>
+        <%= a.text_field :address_street ,required:true%>
         <p>続きを入力</p>
-        <%= a.text_field :address_building %>
+        <%= a.text_field :address_building ,required:true%>
         <% end %>
       <div class="actions">
 

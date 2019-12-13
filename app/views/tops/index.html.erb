@@ -12,8 +12,9 @@
   <body>
     <div class="back_contents">
       <a href="houses"><h3>空き家.com</h3></a>
-      <h2>田舎暮らし始めよう</h2>
-      <h2>空き家.comとは？</h2>
+      <p class="top_page_notice">--  Test.ver  --<p>
+      <h2><%=link_to '新規登録',new_user_registration_path,class:'post' %></h2>
+      <h2><%=link_to 'ログイン',new_user_session_path,class:'post' %></h2>
       <a href="houses"><h2>空き家の一覧を見る</h2></a>
       <ul class="top_ul">
         <% if user_signed_in? %>

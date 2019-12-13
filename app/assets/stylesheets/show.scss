@@ -189,6 +189,13 @@ p{
   margin: 30px 20px;
   border:solid 1px lightgray;
   border-radius: 8px;
+  position:relative;
+  .map_notice{
+    position:absolute;
+    font-size: 12px;
+    left:50px;
+    top:100px;
+  }
 }
 .show_delete{
   position: absolute;
@@ -225,4 +232,7 @@ p{
   border: solid 1px gray;
   border-radius: 5px;
   padding: 2px;
+}
+#hidden_house_id{
+  display:none;
 }
