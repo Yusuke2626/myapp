@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .back_contents{
   height: calc(100vh);
-  background-image:url('/uploads/11.jpg');
+  background-image:image-url('/uploads/11.jpg');
   background-size: cover;
   z-index: 1;
   text-decoration: none;
@@ -29,6 +29,10 @@ h2{
   padding-bottom: 10px;
   text-shadow:1px 2px 0 black, -0px -1px 0 black;
   color:white;
+  a{
+    text-decoration: none;
+    color:white;
+  }
 
    // border: 2px solid black;
 }
