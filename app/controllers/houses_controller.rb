@@ -4,7 +4,6 @@ class HousesController < ApplicationController
     @all_houses = House.all
     @houses = House.all.page(params[:page]).per(5).order('created_at DESC')
     @house = House.new
-
   end
 
   def new
@@ -28,18 +27,15 @@ class HousesController < ApplicationController
   def edit
     @house = current_user.houses.find(params[:id])
     @images = @house.images
-
   end
 
   def update
     @house = current_user.houses.find(params[:id])
-
     if  @house.update(update_house_params)
       redirect_to house_path
     else
       redirect_to root_path
     end
-
   end
 
   def show
@@ -101,8 +97,6 @@ class HousesController < ApplicationController
       @house = House.find_by(prefecture_id:39)
 
     end
-
-      # @houses.find[]
 
   end
 
