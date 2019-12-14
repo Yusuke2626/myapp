@@ -12,18 +12,12 @@ class HousesController < ApplicationController
     @house.images.build
     @house.addresses.build
 
-    # @prefcture = Prefecture.find(params[:prefecture_id])
   end
 
   def create
     @house = current_user.houses.new(house_params)
-
     @house.save
 
-    # house.pref_change
-    # binding.pry
-    # @house.create
-    # current_user.houses(house_params)
   end
 
   def destroy
@@ -34,12 +28,11 @@ class HousesController < ApplicationController
   def edit
     @house = current_user.houses.find(params[:id])
     @images = @house.images
-    # @house.images.build
+
   end
 
   def update
     @house = current_user.houses.find(params[:id])
-    # @house = current_user.houses.find(params[:id])
 
     if  @house.update(update_house_params)
       redirect_to house_path
@@ -51,13 +44,12 @@ class HousesController < ApplicationController
 
   def show
     @house = House.find(params[:id])
-
     @user = @house.user
 
     @qatexts = @house.qaforms
     @address = @house.addresses.find_by(house_id:@house.id)
     @qaform = Qaform.new
-
+  
     end
   end
 
