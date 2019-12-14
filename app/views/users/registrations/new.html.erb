@@ -7,12 +7,12 @@
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="field">
-          <%= f.label :name %><br />
+          <%= f.label :name,'名前を入力' %><br />
           <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
         </div>
 
         <div class="field">
-          <%= f.label :age %><br />
+          <%= f.label :age, '年齢'%><br />
           <%= f.text_field :age, autofocus: true, autocomplete: "age" %>
         </div>
 
@@ -22,24 +22,24 @@
         </div>
 
         <div class="field">
-          <%= f.label :password %>
+          <%= f.label :password,'パスワード' %>
           <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <em>(<%= @minimum_password_length %> 文字以上)</em>
           <% end %><br />
           <%= f.password_field :password, autocomplete: "new-password" %>
         </div>
 
         <div class="field">
-          <%= f.label :password_confirmation %><br />
+          <%= f.label :password_confirmation,'パスワードの再入力' %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
         </div>
 
         <div class="actions">
-          <%= f.submit "Sign up" %>
+          <%= f.submit "登録" %>
         </div>
       <% end %>
 
-      <%= render "users/shared/links" %>
+      <%# <%= render "users/shared/links" %>
     </div>
   </div>
 </div>

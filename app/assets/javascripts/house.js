@@ -239,9 +239,6 @@ $(function(){
       $('.qa_submit').attr('disabled',false)
       $('.qa_textbox').val('');
       $('.qabox').scrollTop(99999);
-
-
     });
   })
-
 });
