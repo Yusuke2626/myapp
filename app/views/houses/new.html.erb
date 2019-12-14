@@ -20,8 +20,12 @@
            <%= f.label :'間取り',class:'new_form' %><br>
            <%= f.text_field :madori ,:placeholder => "”例、3LDK”"  ,required:true%>万円
         </div>
+        <div class="field">
+           <%= f.label :'築年数',class:'new_form' %><br>
+           <%= f.text_field :house_age ,:placeholder => "”年”"  ,required:true%>年
+        </div>
         <%= f.fields_for :images do |i| %>
-          <p>空き家の写真を追加</p>
+          <p class="photo_tittle">空き家の写真を追加</p>
           <div class="img_post_box">
             <div class="img_post1" onClick="$('#img_file1').click()"> ➕画像を選択</div>
             <div class="img_post2" onClick="$('#img_file2').click()"> ➕画像を選択</div>
@@ -53,9 +57,10 @@
     </div>
 
     <div class="new_part_2">
-        <h5>空き家の所在地を入力</h5>
+        <!-- <h5>空き家の所在地を入力</h5> -->
         <%= f.fields_for :addresses do |a| %>
-        <p>郵便番号を入力(町名まで自動入力されます)</p>
+        <p>郵便番号を入力</p>
+        <p>(町名まで自動入力されます)</p>
         <%= a.text_field :postcode, class:'new_form_input',required:true%>
         <p>都道府県</p>
         <%= a.text_field :prefecture_code, collection: JpPrefecture::Prefecture.all, :value_method => :name, include_blank: '都道府県' %><br>

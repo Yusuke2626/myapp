@@ -11,7 +11,6 @@
 text-align: center;
 margin:15px;
 font-size: 15px;
-
 }
 
 .new_box:after {
@@ -20,50 +19,64 @@ display: block;
 clear: both;
 height: 0;
 visibility: hidden;
-// margin-top: -20px;
 z-index: 1;
 }
 .new_main_contents{
   height:calc(100vh - 200px);
   width:calc(100vw - 400px);
-  // float:left;
   color:black;
   border-radius: 10px;
   border:solid 2px lightgray;
   margin: 0px auto;
-  // padding-top: 30px;
-  // margin-right: 360px;
-  // margin-left: 15px;
-  // margin-bottom: 20px;
   background-color:#ffffff;
-
-  // padding-top: 100px;
-  // box-shadow:0px 2px 2px 2px lightgray;
-
 }
 .new_part_1{
   float:left;
   display: inline-block;
   margin-left: 200px;
+ //  p{
+ //   margin:25px 10px 10px 10px;
+ //   font-size: 14px;
+ // }
+ input{
+   border-radius: 5px;
+   color:black;
+   background-color: #eeeeee;
+   font-size: 15px;
+   margin-bottom:10px;
+   height:20px;
+   border:solid 1px lightgray;
+   background: white;
+ }
+ label{
+   font-size: 14px;
+ }
+}
 
-}
-.new_part_1 p{
-  margin:25px 10px 10px 10px;
-}
 .new_part_2{
   float:left;
   display: inline-block;
   margin-left: 100px;
   margin-top: 10px;
-}
-.new_part_2 input {
-  border-radius: 5px;
-  color:black;
-  background-color: #eeeeee;
-  font-size: 15px;
+  text-align: center;
+    input {
+      border-radius: 5px;
+      color:black;
+      background-color: #eeeeee;
+      font-size: 15px;
+      margin-bottom:10px;
+      height:20px;
+      border:solid 1px lightgray;
+      background: white;
+    }
+    .new_submit{
+      height:60px;
+      width:130px;
+      background-color: lightgray;
+    }
 }
 .new_part_2 p{
-
+ font-size: 14px;
 }
 .new_part_1 input {
   border-radius: 5px;
@@ -76,7 +89,10 @@ z-index: 1;
   display: inline-block;
   float:right;
 }
-
+.photo_tittle{
+  margin:0 0 5px;
+  font-size: 14px;
+}
 .new_form{
   font-size: 15px;
 }
@@ -133,7 +149,6 @@ z-index: 1;
   width:90px;
   height:60px;
   border-radius: 5px;
-  // border:1px solid gray;
   position: absolute;
   top:5px;
   left:205px;
@@ -193,6 +208,15 @@ z-index: 1;
   border:dashed gray 2px;
   cursor: pointer;
   cursor: hand;
+}
+#house_madori{
+  margin-left: 30px;
+}
+#house_price{
+  margin-left:30px;
+}
+#house_house_age{
+  margin-left: 15px;
 }
 
 
