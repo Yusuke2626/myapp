@@ -16,6 +16,7 @@
       <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択して下さい' %>
       <%= f.submit "検索" %>
     <% end %>
+
   </div>
   <% if user_signed_in? %>
   <div class="user_info">
@@ -32,22 +33,35 @@
 <div class="main_contents">
   <div class = "search_text">
 
-    <% if @house.prefecture_id == 0 %>
+  <%if @house_i %>
+    <% if @house_i.prefecture_id == 0 %>
       <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=0">北海道エリア ></a></h5>
-    <% elsif @house.prefecture_id == 1 ||@house.prefecture_id == 2||@house.prefecture_id == 3||@house.prefecture_id == 4||@house.prefecture_id == 5||@house.prefecture_id == 6 %>
+    <% elsif @house_i.prefecture_id == 1 ||@house_i.prefecture_id == 2||@house_i.prefecture_id == 3||@house_i.prefecture_id == 4||@house_i.prefecture_id == 5||@house.prefecture_id == 6 %>
       <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=1">東北エリア ></a></h5>
-    <% elsif @house.prefecture_id == 7 %>
-      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=1">関東エリア ></a></h5>
-    <% elsif @house.prefecture_id == 14 %>
+    <% elsif @house_i.prefecture_id == 7 ||@house_i.prefecture_id == 8||@house_i.prefecture_id == 9||@house_i.prefecture_id == 10||@house_i.prefecture_id == 11||@house.prefecture_id == 12 %>
+      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=7">関東エリア ></a></h5>
+    <% elsif @house_i.prefecture_id == 14 ||@house_i.prefecture_id == 15||@house_i.prefecture_id == 16||@house_i.prefecture_id == 17||@house_i.prefecture_id == 18||@house.prefecture_id == 19||@house_i.prefecture_id == 20||@house.prefecture_id == 21||@house.prefecture_id == 22 %>
       <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=1">中部エリア ></a></h5>
-    <% elsif @house.prefecture_id == 23 %>
+    <% elsif @house_i.prefecture_id == 23 ||@house_i.prefecture_id == 24||@house_i.prefecture_id == 25||@house_i.prefecture_id == 26||@house_i.prefecture_id == 27||@house.prefecture_id == 28 ||@house.prefecture_id == 29 %>
       <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=1">関西エリア ></a></h5>
+    <% elsif @house_i.prefecture_id == 30 ||@house.prefecture_id == 31||@house_i.prefecture_id == 32||@house_i.prefecture_id == 33||@house_i.prefecture_id == 34 %>
+      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=1">中国エリア ></a></h5>
+    <% elsif @house_i.prefecture_id == 35 ||@house.prefecture_id == 36||@house_i.prefecture_id == 37||@house_i.prefecture_id == 38%>
+      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=1">四国エリア ></a></h5>
+    <% else %>
+      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=1">九州沖縄エリア ></a></h5>
     <% end %>
+
+  <%else%>
+    <p>検索に一致する家が見つかりませんでした。</p>
+  <%end%>
 
   </div>
 
   <div class ="search_text_plus">
-    <h5 class="text"><a href="/houses/search?prefecture_id=<%=@house.prefecture_id%>"><%=@house.prefecture.name%> ></a></h5>
+    <% if @house_i %>
+      <h5 class="text"><a href="/houses/search?prefecture_id=<%=@house_i.prefecture_id%>"><%=@house_i.prefecture.name%> ></a></h5>
+    <%end%>
   </div>
 
   <% if @houses.present? %>
@@ -110,19 +124,4 @@
   <% end %>
   <%= paginate @houses %>
   <% end %>
-  </div>
-  <!-- <div class="adv_contents">
-    <div class="inaka_photo">
-      <img src="https://spi-ra.jp/wp-content/uploads/2019/06/38477617_m-1080x380.jpg" class="photo_image">
-    </div>
-    <div class="inaka_photo2">
-      <img src="https://spi-ra.jp/wp-content/uploads/2019/06/38477617_m-1080x380.jpg" class="photo_image">
-    </div>
-    <div class="index_box">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQChRe6l5ne8y8iGvnMfRVeqZ4wM_k-149EyCyrZloJErOnKjuI&s" class="photo_image">
-    </div>
-
-    <div class="inaka_photo3">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRDn22k1gnZEv-PqacNgWQriSz5cvzHrAJ_arWH0zzBCRIBY4X9" class="photo_image">
-    </div>
-  </div> -->
+</div>
