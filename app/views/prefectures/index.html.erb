@@ -37,7 +37,50 @@
           <p>北海道</p>
         <% end %>
       </div>
-      
+      <div class="touhoku">
+        <%= link_to   controller:  "searches", action: "index", prefecture_id:1 do%>
+          <img src="<%= asset_path("touhoku.png")%>">
+          <p>東北</p>
+        <% end %>
+      </div>
+      <div class="kantou">
+        <%= link_to   controller:  "searches", action: "index", prefecture_id:7 do%>
+          <img src="<%= asset_path("kantou.png")%>">
+          <p>関東</p>
+        <% end %>
+      </div>
+      <div class="tyubu">
+        <%= link_to   controller: "searches", action: "index", prefecture_id:14 do%>
+          <img src="<%= asset_path("chubu.png")%>">
+          <p>中部</p>
+        <% end %>
+      </div>
+      <div class="kansai">
+        <%= link_to   controller:  "searches", action: "index", prefecture_id:23 do%>
+          <img src="<%= asset_path("kansai.png")%>">
+          <p>関西</p>
+      <% end %>
+      </div>
+      <div class="tyugoku">
+        <%= link_to   controller:  "searches", action: "index", prefecture_id:30 do%>
+          <img src="<%= asset_path("tyugoku.png")%>">
+          <p>中国</p>
+        <% end %>
+      </div>
+      <div class="shikoku">
+        <%= link_to   controller:  "searches", action: "index", prefecture_id:35 do%>
+          <img src="<%= asset_path("shikoku.png")%>">
+          <p>四国</p>
+        <% end %>
+      </div>
+      <div class="kyusyu_okinawa">
+        <%= link_to   controller:  "searches", action: "index", prefecture_id:39 do%>
+          <p class="kyusyu_text">九州</p>
+          <p class="okinawa_text">沖縄</p>
+          <img src="<%= asset_path("kyusyu.png")%>",class="kyusyu">
+          <img src="<%= asset_path("okinawa.png")%>",class="okinawa">
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
