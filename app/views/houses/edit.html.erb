@@ -25,6 +25,10 @@
            <%= f.label :'間取り',class:'new_form' %><br>
            <%= f.text_field :madori ,:placeholder => "”例、3LDK”"  %>万円
         </div>
+        <div class="field">
+           <%= f.label :'築年数',class:'new_form' %><br>
+           <%= f.text_field :house_age ,:placeholder => "”年”"  ,required:true%>年
+        </div>
         <%= f.fields_for :images do |i| %>
           <p>空き家の写真を追加</p>
           <div class="img_post_box">

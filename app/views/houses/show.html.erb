@@ -101,7 +101,7 @@
         <tr>
           <th>価格</th> <th>間取り</th> <th>所在地</th><th>築年数</th>
         </tr>
-          <td><%= @house.price %>円</td><td><%=@house.madori%></td><td>&nbsp;<% if @address.present? %> <%=@address.prefecture_code%><%=@address.address_city%> <%=@address.address_street%> <%=@address.address_building%> &ensp; <%else%><p>情報がありません</p><%end%></td>
+          <td><%= @house.price %>円</td><td><%=@house.madori%></td><td>&nbsp;<% if @address.present? %> <%=@address.prefecture_code%><%=@address.address_city%> <%=@address.address_street%> <%=@address.address_building%> &ensp; <%else%><p>情報がありません</p><%end%></td><td><%= @house.house_age%>年</td>
         <!-- <tr>
           <td></td>
         </tr> -->

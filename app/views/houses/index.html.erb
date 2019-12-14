@@ -1,17 +1,10 @@
 
 <div class="sidebar_contents">
-  <!-- <p>検索</p> -->
-  <!-- <div class= total_house_count>
-    <p>投稿された空き家の数</p>
-    <h5><%= @all_houses.length %>件</h5>
-    <
 
-  </div> -->
   <div class="sidebar_form">
 
-    <!-- <br> -->
     <%= link_to "全てから選ぶ","/houses",method: :get ,class:"all_search"%>
-    <!-- <p class="input">検索</p> -->
+
     <%= form_for(@house,url:search_searches_path, method:'get') do |f| %>
       <%= f.label :エリアから選ぶ, class:"form_text" %>
       <%= f.select :prefecture_id, [["北海道",0],["東北エリア",1],["関東エリア",7],["中部エリア",14],["関西エリア",25],["中国エリア",32],["四国エリア",35],["九州、沖縄エリア",46]],prompt: '選択して下さい' %>

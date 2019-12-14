@@ -49,7 +49,7 @@ class HousesController < ApplicationController
     @qatexts = @house.qaforms
     @address = @house.addresses.find_by(house_id:@house.id)
     @qaform = Qaform.new
-  
+
     end
   end
 
@@ -110,13 +110,9 @@ class HousesController < ApplicationController
 
   private
   def house_params
-    params.require(:house).permit(:name,:price,:madori,:prefecture_id, images_attributes:[:image1,:image2,:image3,:image4,:image5], addresses_attributes:[:postcode,:prefecture_code,:address_city,:address_street,:address_building,:address,:latitude,:longitude])
+    params.require(:house).permit(:name,:price,:madori,:house_age,:prefecture_id, images_attributes:[:image1,:image2,:image3,:image4,:image5], addresses_attributes:[:postcode,:prefecture_code,:address_city,:address_street,:address_building,:address,:latitude,:longitude])
   end
 
   def update_house_params
-    params.require(:house).permit(:name,:price,:madori,:prefecture_id, images_attributes: [:image1,:image2,:image3,:image4,:image5,:destroy,:id], addresses_attributes:[:postcode,:prefecture_code,:address_city,:address_street,:address_building,:address,:latitude,:longitude,:destroy,:id])
+    params.require(:house).permit(:name,:price,:madori,:house_age,:prefecture_id, images_attributes: [:image1,:image2,:image3,:image4,:image5,:destroy,:id], addresses_attributes:[:postcode,:prefecture_code,:address_city,:address_street,:address_building,:address,:latitude,:longitude,:destroy,:id])
   end
-
-  # def house_params
-  #   params.require(:house).permit(:name,:price, {image:[]})
-  # end
