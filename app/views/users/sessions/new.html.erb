@@ -6,13 +6,8 @@
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
         <div class="field">
-          <%= f.label :name, '年齢' %><br />
+          <%= f.label :name, '名前' %><br />
           <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-        </div>
-
-        <div class="field">
-          <%= f.label :age, '年齢' %><br />
-          <%= f.text_field :age, autofocus: true, autocomplete: "age" %>
         </div>
 
         <div class="field">
@@ -36,7 +31,7 @@
           <%= f.submit "ログイン" %>
         </div>
       <% end %>
-
+      <p class="registration_link"><a href="/users/sign_up">新規登録はこちら</a></p>
 
     </div>
   </div>
