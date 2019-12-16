@@ -1,47 +1,65 @@
 
 <div class="sidebar_contents">
 
-  <div class="sidebar_form">
-
+   <div class="sidebar_form">
     <%= link_to "全てから選ぶ","/houses",method: :get ,class:"all_search"%>
-
     <%= form_for(@house,url:search_searches_path, method:'get',html:{class:'new_house1'}) do |f| %>
       <%= f.label :エリアから選ぶ, class:"form_text" %>
       <%= f.select :prefecture_id, [["北海道",0],["東北エリア",1],["関東エリア",7],["中部エリア",14],["関西エリア",25],["中国エリア",32],["四国エリア",35],["九州、沖縄エリア",46]],prompt: '選択して下さい' %>
-      <%= f.submit "検索" ,class:'side_submit' ,style:'display:none;'%>
+      <%= f.submit "検索"  ,class:'side_submit',style:'display:none;'%>
     <% end %>
     <p></p><br><br>
     <%= form_for(@house,url:search_prefectures_path, method:'get',html:{class:'new_house2'}) do |f| %>
-      <%= f.label :都道府県から選ぶ, class:"form_text" %>
+      <%= f.label :都道府県から選ぶ,class:"form_text" %>
       <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank: '選択して下さい'},{class:'new_house_2'} %>
-      <%= f.submit "検索",class:'side_submit2' ,style:'display:none;'%>
+      <%= f.submit "検索" ,class:'side_submit2',style:'display:none;'%>
     <% end %>
   </div>
+
   <% if user_signed_in? %>
   <div class="user_info">
     <p> ユーザー情報  </p>
     <p>名前:<%=current_user.name%></p>
-    <!-- <p>年齢:<%=current_user.age%></p> -->
-    <!-- <p>投稿した空き家の数:<%=current_user.houses.length%></p> -->
+    <p>投稿した空き家の数:<%=current_user.houses.length%></p>
     <p>お気に入りの空き家の数:<%=current_user.favorites.length%></p>
-    <p><a href="/users/edit">ユーザー情報の変更</a></p>
+    <p>ユーザー情報の変更</p>
   </div>
   <% end %>
+
 </div>
 <div class="main_contents">
+  <div class = "search_text">
 
-  <h5 class="text"><a href="/houses">全ての空き家一覧 ></a></h5>
+    <% if @house.prefecture_id == 0 %>
+      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=0"> 北海道エリア ></a></h5>
+    <% elsif @house.prefecture_id == 1 %>
+      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=1"> 東北エリア ></a></h5>
+    <% elsif @house.prefecture_id == 7 %>
+      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=1"> 関東エリア ></a></h5>
+    <% elsif @house.prefecture_id == 14 %>
+      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=1"> 中部エリア ></a></h5>
+    <% elsif @house.prefecture_id == 23 %>
+      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=1"> 関西エリア ></a></h5>
+    <% end %>
+
+  </div>
+
+
+
+  <% if @houses.present? %>
   <% @houses.each do |house| %>
   <div class="mypost_house">
     <p class="house_name"><a href="/houses/<%=house.id%>"><%= house.name %></a></p>
     <div class="house_image_box">
       <div class="house_image_list">
+
         <% if house.images.present? %>
         <% else %>
           <p class="not_image"><%= "画像はありません" %></p>
         <% end %>
         <% house.images.each do |image| %>
             <a href="/houses/<%=house.id%>">
+
               <% if image.image1.present? %>
                 <img src="<%=image.image1.url %>" width="50" height="50" class="house_image">
               <% else %>
@@ -53,10 +71,13 @@
               <% if image.image3.present? %>
                  <img src="<%=image.image3.url %>" width="50" height="50" class="house_image">
               <% end %>
+
             </a>
         <% end %>
+
       </div>
     </div>
+
       <%if user_signed_in? %>
         <% if !Favorite.exists?(user_id:current_user.id,house_id:house.id)%>
           <%= link_to "お気に入りに追加","/houses/#{house.id}/add",method: :post ,class:"favorite_btn"%>
@@ -76,7 +97,7 @@
       <tr>
         <th>価格</th><th>間取り</th><th>所在地</th>
       </tr>
-        <td><%= house.price %>万円</td><td><%= house.madori %></td><td><%=house.prefecture.name %><%if @address%><%=@address.address_city%><%end%></td>
+        <td><%= house.price %>円</td><td><%= house.madori %></td><td><%=house.prefecture.name %><%if @address%><%=@address.address_city%><%end%></td>
       <tr>
       </tr>
     </table>
@@ -84,4 +105,5 @@
 
   <% end %>
   <%= paginate @houses %>
+  <% end %>
   </div>

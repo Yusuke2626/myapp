@@ -1,0 +1,77 @@
+// .select_list{
+//   // border: solid 1px lightgray;
+//
+// }
+#house_prefecture_id{
+height:40px;
+}
+.select_list_box{
+  position:absolute;
+  top:100px;
+  left:190px;
+}
+.pref_list{
+  text-align: center;
+  line-height: 18px;
+  background-color: white;
+  border: solid 1px lightgray;
+  border-radius: 5px;
+  height:18px;
+  width:110px;
+  padding:3px;
+  margin-left: 10px;
+  font-weight: normal;
+  font-family: sans-serif;
+  cursor: pointer;
+  font-size: 12px;
+}
+.pref_list:hover{
+  background-color: lightgray;
+  color:white;
+}
+.pref_list2{
+  text-align: center;
+  line-height: 13px;
+  background-color: white;
+  border: solid 1px lightgray;
+  border-radius: 5px;
+  height:13px;
+  width:70px;
+  padding:3px;
+  margin-left: 10px;
+  font-weight: normal;
+  font-family: sans-serif;
+  cursor: pointer;
+
+}
+.pref_list2:hover{
+  background-color: lightgray;
+  color:white;
+}
+.side_submit{
+  display: none;
+}
+.select_box_search{
+  width:180px;
+  height:500px;
+  background-color: white;
+  padding:10px;
+  border:solid 1px lightgray;
+  border-radius: 5px;
+  display: inline-block;
+  position: absolute;
+  top:170px;
+  left:160px;
+  font-size: 12px;
+  &__1{
+    width:80px;
+    height:150px;
+    float:left;
+  }
+  &__2{
+    width:80px;
+    height:150px;
+    float:left;
+
+  }
+}
