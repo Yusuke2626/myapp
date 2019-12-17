@@ -7,30 +7,12 @@
     <%= favicon_link_tag('favicon.ico') %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <!-- <link rel="shortcut icon" href="favicon.ico"> -->
-    <!-- <link href="https://fonts.googleapis.com/css?family=Modak&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/earlyaccess/nikukyu.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet"> -->
+
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <!-- <script type="text/javascript">
-        WebFontConfig = {
-          google: { families: [ 'Unica+One::latin' ] }
-        };
-        (function() {
-          var wf = document.createElement('script');
-          wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-            '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-          wf.type = 'text/javascript';
-          wf.async = 'true';
-          var s = document.getElementsByTagName('script')[0];
-          s.parentNode.insertBefore(wf, s);
-        })();
-    </script> -->
+
     <script type="text/javascript"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <!-- <script src="//maps.google.com/maps/api/js?key=AIzaSyCtgND6yhyU5NhQokoErJ2AEqYWY8pg1Ig"></script> -->
     <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
     <script type="text/javascript"></script>
   </head>
@@ -78,19 +60,14 @@
         <p><%= link_to '空き家を投稿してみよう',new_house_path, class:'post_pul' %> </p>
         <li><%= link_to '空き家を投稿する',new_house_path, class:'' %> </li>
       </ul>
+      <%else%>
+      <ul class="new_post_header_menu">
+        <p><%= link_to '空き家を投稿してみよう',new_user_session_path, class:'post_pul' %> </p>
+        <li><%= link_to '空き家を投稿する',new_user_session_path, class:'' %> </li>
+      </ul>
       <% end %>
-      <!-- <div class=total_house>
-        <p>投稿された空き家の数</p>
-      </div> -->
-    </div>
-    <!-- <div class="sidebar_contents">
-    hellloo
-    </div>
-    <div class="main_contents">
-    hello
-    </div> -->
 
-
+    </div>
     <div class="bottom_contents">
         <%= yield %>
 
