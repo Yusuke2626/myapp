@@ -16,7 +16,7 @@
 
     </div>
     <div class="sending_box">
-      <p><a href="/users/<%=current_user.id%>/messages"><%= image_tag 'mail.png' %> 送信箱</a></p>
+      <p><%= image_tag 'mail.png' %><%=link_to ' 送信箱', user_messages_path(user_id:current_user.id,request:1 )%> </p>
     </div>
   </div>
   <div class="user_show_info">
@@ -32,14 +32,17 @@
 </div>
 <div class="my_mail_box">
   <div class="my_mail_tab_box">
-
-    <%if @new_mail.empty? %>
+    <%if @send_mail_request%>
       <input id="tab_01" type="radio" name="tab" class="tab_switch" /><label class="tab_label" for="tab_01" >新着ボックス</label>
-      <input id="tab_02" type="radio" name="tab" class="tab_switch" checked="checked" /><label class="tab_label" for="tab_02" checked="checked">受信ボックス</label>
-      <input id="tab_03" type="radio" name="tab" class="tab_switch" /><label class="tab_label" for="tab_03">送信ボックス</label>
-    <% else %>
+      <input id="tab_02" type="radio" name="tab" class="tab_switch" /><label class="tab_label" for="tab_02" >受信ボックス</label>
+      <input id="tab_03" type="radio" name="tab" class="tab_switch" checked="checked" /><label class="tab_label" for="tab_03" checked="checked">送信ボックス</label>
+    <%elsif @new_mail.present? && @send_mail_request.nil?%>
       <input id="tab_01" type="radio" name="tab" class="tab_switch" checked="checked" /><label class="tab_label" for="tab_01" checked="checked">新着ボックス</label>
       <input id="tab_02" type="radio" name="tab" class="tab_switch" /><label class="tab_label" for="tab_02">受信ボックス</label>
+      <input id="tab_03" type="radio" name="tab" class="tab_switch" /><label class="tab_label" for="tab_03">送信ボックス</label>
+    <% else %>
+      <input id="tab_01" type="radio" name="tab" class="tab_switch" /><label class="tab_label" for="tab_01" >新着ボックス</label>
+      <input id="tab_02" type="radio" name="tab" class="tab_switch" checked="checked" /><label class="tab_label" for="tab_02" checked="checked">受信ボックス</label>
       <input id="tab_03" type="radio" name="tab" class="tab_switch" /><label class="tab_label" for="tab_03">送信ボックス</label>
     <% end %>
 

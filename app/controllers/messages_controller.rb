@@ -33,7 +33,7 @@ class MessagesController < ApplicationController
       @receive_mails = Message.where(to_user_id:params[:user_id]).page(params[:page]).per(5).order('created_at DESC')
       @send_mails = Message.where(user_id:params[:user_id]).page(params[:page]).per(5).order('created_at DESC')
       @new_mail = @receive_mails.where(open_num:0).page(params[:page]).per(5).order('created_at DESC')
-
+      @send_mail_request = params[:request]
 
       # @to_user = User.find()
       # binding.pry

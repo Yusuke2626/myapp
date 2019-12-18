@@ -16,7 +16,7 @@
       <% end %>
     </div>
     <div class="sending_box">
-      <p><a href="/users/<%=current_user.id%>/messages"> <%= image_tag 'mail.png' %> 送信箱</a></p>
+      <p><%= image_tag 'mail.png' %><%=link_to ' 送信箱', user_messages_path(user_id:current_user.id,request:1 )%> </p>
     </div>
   </div>
   <div class="user_show_info">
