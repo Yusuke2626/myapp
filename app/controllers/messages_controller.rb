@@ -5,13 +5,11 @@ class MessagesController < ApplicationController
       @house = House.find(params[:house_id])
       @receive_mails =Message.where(to_user_id:current_user.id)
       @new_mail = @receive_mails.where(open_num:0)
-      # @from_mail = Mail.find()
       @to_user = User.find(@house.user_id)
       if params[:id]
         @from_user = User.find(params[:id])
       end
-      # @from_user = Mail.find_by(user_id:params[current_user])
-      # binding.pry
+
     end
 
     def create
@@ -35,8 +33,6 @@ class MessagesController < ApplicationController
       @new_mail = @receive_mails.where(open_num:0).page(params[:page]).per(5).order('created_at DESC')
       @send_mail_request = params[:request]
 
-      # @to_user = User.find()
-      # binding.pry
     end
 
     def show
@@ -51,7 +47,7 @@ class MessagesController < ApplicationController
       if @mail.to_user_id == current_user.id && @mail.open_num == 0
          @mail.update(open_num:1)
       end
-      # binding.pry
+
     end
 
 
