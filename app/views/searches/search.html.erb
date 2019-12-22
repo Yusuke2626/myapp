@@ -29,19 +29,23 @@
 </div>
 <div class="main_contents">
   <div class = "search_text">
-
     <% if @house.prefecture_id == 0 %>
-      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=0"> 北海道エリア ></a></h5>
-    <% elsif @house.prefecture_id == 1 %>
-      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=1"> 東北エリア ></a></h5>
-    <% elsif @house.prefecture_id == 7 %>
-      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=1"> 関東エリア ></a></h5>
-    <% elsif @house.prefecture_id == 14 %>
-      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=1"> 中部エリア ></a></h5>
-    <% elsif @house.prefecture_id == 23 %>
-      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><a href="/houses/search?prefecture_id=1"> 関西エリア ></a></h5>
+      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><%= link_to '北海道エリア' ,controller: "searches", action: "index",prefecture_id:0%></h5>
+    <% elsif @house.prefecture_id == 1 ||@house.prefecture_id == 2||@house.prefecture_id == 3||@house.prefecture_id == 4||@house.prefecture_id == 5||@house.prefecture_id == 6 %>
+      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><%= link_to '東北エリア >' ,controller: "searches", action: "index",prefecture_id:1%></h5>
+    <% elsif @house.prefecture_id == 7 ||@house.prefecture_id == 8||@house.prefecture_id == 9||@house.prefecture_id == 10||@house.prefecture_id == 11||@house.prefecture_id == 12 %>
+      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><%= link_to '関東エリア >' ,controller: "searches", action: "index",prefecture_id:7%></h5>
+    <% elsif @house.prefecture_id == 14 ||@house.prefecture_id == 15||@house.prefecture_id == 16||@house.prefecture_id == 17||@house.prefecture_id == 18||@house.prefecture_id == 19||@house.prefecture_id == 20||@house.prefecture_id == 21||@house.prefecture_id == 22 %>
+      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><%= link_to '中部エリア >' ,controller: "searches", action: "index",prefecture_id:14%></h5>
+    <% elsif @house.prefecture_id == 23 ||@house.prefecture_id == 24||@house.prefecture_id == 25||@house.prefecture_id == 26||@house.prefecture_id == 27||@house.prefecture_id == 28 ||@house.prefecture_id == 29 %>
+      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><%= link_to '関西エリア >' ,controller: "searches", action: "index",prefecture_id:23%></h5>
+    <% elsif @house.prefecture_id == 30 ||@house.prefecture_id == 31||@house.prefecture_id == 32||@house.prefecture_id == 33||@house.prefecture_id == 34 %>
+      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><%= link_to '中国エリア >' ,controller: "searches", action: "index",prefecture_id:30%></h5>
+    <% elsif @house.prefecture_id == 35 ||@house.prefecture_id == 36||@house.prefecture_id == 37||@house.prefecture_id == 38%>
+      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><%= link_to '四国エリア >' ,controller: "searches", action: "index",prefecture_id:35%></h5>
+    <% else %>
+      <h5 class="text"><a href="/houses">全国の空き家 ></a></h5><h5 class="text"><%= link_to '九州、沖縄エリア >' ,controller: "searches", action: "index",prefecture_id:39%></h5>
     <% end %>
-
   </div>
 
 
@@ -97,7 +101,7 @@
       <tr>
         <th>価格</th><th>間取り</th><th>所在地</th>
       </tr>
-        <td><%= house.price %>円</td><td><%= house.madori %></td><td><%=house.prefecture.name %><%if @address%><%=@address.address_city%><%end%></td>
+        <td><%= house.price %>万円</td><td><%= house.madori %></td><td><%=house.prefecture.name %><%if @address%><%=@address.address_city%><%end%></td>
       <tr>
       </tr>
     </table>
