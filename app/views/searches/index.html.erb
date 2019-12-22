@@ -11,8 +11,8 @@
     <p></p><br><br>
     <%= form_for(@house,url:search_prefectures_path, method:'get',html:{class:'new_house2'}) do |f| %>
       <%= f.label :都道府県から選ぶ,class:"form_text" %>
-      <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択して下さい' %>
-      <%= f.submit "検索" %>
+      <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank: '選択して下さい'},{class:'new_house_2'}  %>
+      <%= f.submit "検索",class:'side_submit2',style:'display:none;' %>
     <% end %>
   </div>
 
